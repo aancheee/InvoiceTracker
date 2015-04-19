@@ -1,0 +1,654 @@
+﻿namespace InvoiceTracker
+{
+    partial class AddInvoiceForm
+    {
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Windows Form Designer generated code
+
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddInvoiceForm));
+            this.tbInvoiceNumber = new System.Windows.Forms.TextBox();
+            this.lblInvoiceNumber = new System.Windows.Forms.Label();
+            this.lblClientName = new System.Windows.Forms.Label();
+            this.clientBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.invoiceTrackerDataSet = new InvoiceTracker.InvoiceTrackerDataSet();
+            this.clientTableAdapter = new InvoiceTracker.InvoiceTrackerDataSetTableAdapters.ClientTableAdapter();
+            this.lblInvoiceDate = new System.Windows.Forms.Label();
+            this.lblInvoiceLocation = new System.Windows.Forms.Label();
+            this.lblNote = new System.Windows.Forms.Label();
+            this.dateInvoice = new System.Windows.Forms.DateTimePicker();
+            this.cbLocations = new System.Windows.Forms.ComboBox();
+            this.locationBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.tbNote = new System.Windows.Forms.TextBox();
+            this.btnSave = new System.Windows.Forms.Button();
+            this.btnCancel = new System.Windows.Forms.Button();
+            this.locationTableAdapter = new InvoiceTracker.InvoiceTrackerDataSetTableAdapters.LocationTableAdapter();
+            this.invoiceTableAdapter = new InvoiceTracker.InvoiceTrackerDataSetTableAdapters.InvoiceTableAdapter();
+            this.invoiceBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dgInvoiceItems = new System.Windows.Forms.DataGridView();
+            this.ItemIDColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.InvoiceIDColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DescriptionColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UnitIDColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.unitBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.UnitPriceColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.QuantityColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ValueColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.VATColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.VatSumColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TotalColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.invoiceItemBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.invoiceItemTableAdapter = new InvoiceTracker.InvoiceTrackerDataSetTableAdapters.InvoiceItemTableAdapter();
+            this.unitTableAdapter = new InvoiceTracker.InvoiceTrackerDataSetTableAdapters.UnitTableAdapter();
+            this.lblClientPIB = new System.Windows.Forms.Label();
+            this.lblClientAddress = new System.Windows.Forms.Label();
+            this.gbClient = new System.Windows.Forms.GroupBox();
+            this.tbClientAddress = new System.Windows.Forms.TextBox();
+            this.tbClientPIB = new System.Windows.Forms.TextBox();
+            this.tbClientName = new System.Windows.Forms.TextBox();
+            this.fontDialog1 = new System.Windows.Forms.FontDialog();
+            this.bindingNavigator1 = new System.Windows.Forms.BindingNavigator(this.components);
+            this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
+            this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
+            this.bindingNavigatorDeleteItem = new System.Windows.Forms.ToolStripButton();
+            this.bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
+            this.bindingNavigatorMovePreviousItem = new System.Windows.Forms.ToolStripButton();
+            this.bindingNavigatorSeparator = new System.Windows.Forms.ToolStripSeparator();
+            this.bindingNavigatorPositionItem = new System.Windows.Forms.ToolStripTextBox();
+            this.bindingNavigatorSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.bindingNavigatorMoveNextItem = new System.Windows.Forms.ToolStripButton();
+            this.bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
+            this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.btnPrint = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.clientBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.invoiceTrackerDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.locationBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.invoiceBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgInvoiceItems)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.unitBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.invoiceItemBindingSource)).BeginInit();
+            this.gbClient.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).BeginInit();
+            this.bindingNavigator1.SuspendLayout();
+            this.SuspendLayout();
+            // 
+            // tbInvoiceNumber
+            // 
+            this.tbInvoiceNumber.CausesValidation = false;
+            this.tbInvoiceNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbInvoiceNumber.Location = new System.Drawing.Point(163, 27);
+            this.tbInvoiceNumber.Name = "tbInvoiceNumber";
+            this.tbInvoiceNumber.ReadOnly = true;
+            this.tbInvoiceNumber.Size = new System.Drawing.Size(277, 22);
+            this.tbInvoiceNumber.TabIndex = 1;
+            // 
+            // lblInvoiceNumber
+            // 
+            this.lblInvoiceNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblInvoiceNumber.Location = new System.Drawing.Point(17, 27);
+            this.lblInvoiceNumber.Name = "lblInvoiceNumber";
+            this.lblInvoiceNumber.Size = new System.Drawing.Size(134, 29);
+            this.lblInvoiceNumber.TabIndex = 0;
+            this.lblInvoiceNumber.Text = "lblInvoiceNumber";
+            // 
+            // lblClientName
+            // 
+            this.lblClientName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblClientName.Location = new System.Drawing.Point(32, 146);
+            this.lblClientName.Name = "lblClientName";
+            this.lblClientName.Size = new System.Drawing.Size(134, 29);
+            this.lblClientName.TabIndex = 7;
+            this.lblClientName.Text = "lblClientName";
+            // 
+            // clientBindingSource
+            // 
+            this.clientBindingSource.DataMember = "Client";
+            this.clientBindingSource.DataSource = this.invoiceTrackerDataSet;
+            // 
+            // invoiceTrackerDataSet
+            // 
+            this.invoiceTrackerDataSet.DataSetName = "InvoiceTrackerDataSet";
+            this.invoiceTrackerDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // clientTableAdapter
+            // 
+            this.clientTableAdapter.ClearBeforeFill = true;
+            // 
+            // lblInvoiceDate
+            // 
+            this.lblInvoiceDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblInvoiceDate.Location = new System.Drawing.Point(17, 66);
+            this.lblInvoiceDate.Name = "lblInvoiceDate";
+            this.lblInvoiceDate.Size = new System.Drawing.Size(134, 29);
+            this.lblInvoiceDate.TabIndex = 2;
+            this.lblInvoiceDate.Text = "lblInvoiceDate";
+            // 
+            // lblInvoiceLocation
+            // 
+            this.lblInvoiceLocation.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblInvoiceLocation.Location = new System.Drawing.Point(501, 59);
+            this.lblInvoiceLocation.Name = "lblInvoiceLocation";
+            this.lblInvoiceLocation.Size = new System.Drawing.Size(134, 29);
+            this.lblInvoiceLocation.TabIndex = 4;
+            this.lblInvoiceLocation.Text = "lblInvoiceLocation";
+            // 
+            // lblNote
+            // 
+            this.lblNote.Location = new System.Drawing.Point(504, 146);
+            this.lblNote.Name = "lblNote";
+            this.lblNote.Size = new System.Drawing.Size(134, 29);
+            this.lblNote.TabIndex = 11;
+            this.lblNote.Text = "lblNote";
+            // 
+            // dateInvoice
+            // 
+            this.dateInvoice.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateInvoice.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateInvoice.ImeMode = System.Windows.Forms.ImeMode.On;
+            this.dateInvoice.Location = new System.Drawing.Point(163, 66);
+            this.dateInvoice.Name = "dateInvoice";
+            this.dateInvoice.Size = new System.Drawing.Size(277, 22);
+            this.dateInvoice.TabIndex = 3;
+            // 
+            // cbLocations
+            // 
+            this.cbLocations.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cbLocations.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cbLocations.DataSource = this.locationBindingSource;
+            this.cbLocations.DisplayMember = "LocationName";
+            this.cbLocations.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbLocations.FormattingEnabled = true;
+            this.cbLocations.Location = new System.Drawing.Point(656, 59);
+            this.cbLocations.Name = "cbLocations";
+            this.cbLocations.Size = new System.Drawing.Size(277, 24);
+            this.cbLocations.TabIndex = 5;
+            this.cbLocations.ValueMember = "LocationID";
+            // 
+            // locationBindingSource
+            // 
+            this.locationBindingSource.DataMember = "Location";
+            this.locationBindingSource.DataSource = this.invoiceTrackerDataSet;
+            // 
+            // tbNote
+            // 
+            this.tbNote.Location = new System.Drawing.Point(657, 146);
+            this.tbNote.Multiline = true;
+            this.tbNote.Name = "tbNote";
+            this.tbNote.Size = new System.Drawing.Size(277, 84);
+            this.tbNote.TabIndex = 12;
+            // 
+            // btnSave
+            // 
+            this.btnSave.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnSave.AutoEllipsis = true;
+            this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSave.Location = new System.Drawing.Point(427, 529);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(86, 25);
+            this.btnSave.TabIndex = 15;
+            this.btnSave.Text = "btn&Save";
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
+            // btnCancel
+            // 
+            this.btnCancel.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancel.Location = new System.Drawing.Point(537, 530);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(86, 25);
+            this.btnCancel.TabIndex = 0;
+            this.btnCancel.Text = "btn&Cancel";
+            this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            // 
+            // locationTableAdapter
+            // 
+            this.locationTableAdapter.ClearBeforeFill = true;
+            // 
+            // invoiceTableAdapter
+            // 
+            this.invoiceTableAdapter.ClearBeforeFill = true;
+            // 
+            // invoiceBindingSource
+            // 
+            this.invoiceBindingSource.DataMember = "Invoice";
+            this.invoiceBindingSource.DataSource = this.invoiceTrackerDataSet;
+            // 
+            // dgInvoiceItems
+            // 
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgInvoiceItems.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgInvoiceItems.AutoGenerateColumns = false;
+            this.dgInvoiceItems.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgInvoiceItems.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ItemIDColumn,
+            this.InvoiceIDColumn,
+            this.DescriptionColumn,
+            this.UnitIDColumn,
+            this.UnitPriceColumn,
+            this.QuantityColumn,
+            this.ValueColumn,
+            this.VATColumn,
+            this.VatSumColumn,
+            this.TotalColumn});
+            this.dgInvoiceItems.DataSource = this.invoiceItemBindingSource;
+            this.dgInvoiceItems.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnKeystroke;
+            this.dgInvoiceItems.Location = new System.Drawing.Point(21, 309);
+            this.dgInvoiceItems.Name = "dgInvoiceItems";
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgInvoiceItems.RowsDefaultCellStyle = dataGridViewCellStyle2;
+            this.dgInvoiceItems.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgInvoiceItems.Size = new System.Drawing.Size(1016, 187);
+            this.dgInvoiceItems.TabIndex = 13;
+            this.dgInvoiceItems.CellLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgInvoiceItems_CellLeave);
+            this.dgInvoiceItems.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dgInvoiceItems_CellValidating);
+            this.dgInvoiceItems.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgInvoiceItems_CellValueChanged);
+            this.dgInvoiceItems.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgInvoiceItems_RowEnter);
+            this.dgInvoiceItems.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dgInvoiceItems_RowsAdded);
+            // 
+            // ItemIDColumn
+            // 
+            this.ItemIDColumn.DataPropertyName = "ItemID";
+            this.ItemIDColumn.HeaderText = "ItemID";
+            this.ItemIDColumn.Name = "ItemIDColumn";
+            this.ItemIDColumn.Visible = false;
+            this.ItemIDColumn.Width = 120;
+            // 
+            // InvoiceIDColumn
+            // 
+            this.InvoiceIDColumn.DataPropertyName = "InvoiceID";
+            this.InvoiceIDColumn.HeaderText = "InvoiceID";
+            this.InvoiceIDColumn.Name = "InvoiceIDColumn";
+            this.InvoiceIDColumn.Visible = false;
+            // 
+            // DescriptionColumn
+            // 
+            this.DescriptionColumn.DataPropertyName = "Description";
+            this.DescriptionColumn.HeaderText = "Description";
+            this.DescriptionColumn.Name = "DescriptionColumn";
+            this.DescriptionColumn.Width = 150;
+            // 
+            // UnitIDColumn
+            // 
+            this.UnitIDColumn.DataPropertyName = "UnitID";
+            this.UnitIDColumn.DataSource = this.unitBindingSource;
+            this.UnitIDColumn.DisplayMember = "FullName";
+            this.UnitIDColumn.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.ComboBox;
+            this.UnitIDColumn.HeaderText = "Unit";
+            this.UnitIDColumn.Name = "UnitIDColumn";
+            this.UnitIDColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.UnitIDColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.UnitIDColumn.ValueMember = "UnitID";
+            this.UnitIDColumn.Width = 120;
+            // 
+            // unitBindingSource
+            // 
+            this.unitBindingSource.DataMember = "Unit";
+            this.unitBindingSource.DataSource = this.invoiceTrackerDataSet;
+            // 
+            // UnitPriceColumn
+            // 
+            this.UnitPriceColumn.DataPropertyName = "UnitPrice";
+            this.UnitPriceColumn.HeaderText = "Unit Price";
+            this.UnitPriceColumn.Name = "UnitPriceColumn";
+            // 
+            // QuantityColumn
+            // 
+            this.QuantityColumn.DataPropertyName = "Quantity";
+            this.QuantityColumn.HeaderText = "Quantity";
+            this.QuantityColumn.Name = "QuantityColumn";
+            // 
+            // ValueColumn
+            // 
+            this.ValueColumn.HeaderText = "Value";
+            this.ValueColumn.Name = "ValueColumn";
+            this.ValueColumn.ReadOnly = true;
+            // 
+            // VATColumn
+            // 
+            this.VATColumn.DataPropertyName = "VAT";
+            this.VATColumn.HeaderText = "VAT";
+            this.VATColumn.Name = "VATColumn";
+            // 
+            // VatSumColumn
+            // 
+            this.VatSumColumn.HeaderText = "VatSum";
+            this.VatSumColumn.Name = "VatSumColumn";
+            this.VatSumColumn.ReadOnly = true;
+            // 
+            // TotalColumn
+            // 
+            this.TotalColumn.HeaderText = "Total";
+            this.TotalColumn.Name = "TotalColumn";
+            this.TotalColumn.ReadOnly = true;
+            // 
+            // invoiceItemBindingSource
+            // 
+            this.invoiceItemBindingSource.DataMember = "InvoiceItem";
+            this.invoiceItemBindingSource.DataSource = this.invoiceTrackerDataSet;
+            // 
+            // invoiceItemTableAdapter
+            // 
+            this.invoiceItemTableAdapter.ClearBeforeFill = true;
+            // 
+            // unitTableAdapter
+            // 
+            this.unitTableAdapter.ClearBeforeFill = true;
+            // 
+            // lblClientPIB
+            // 
+            this.lblClientPIB.AutoSize = true;
+            this.lblClientPIB.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblClientPIB.Location = new System.Drawing.Point(33, 185);
+            this.lblClientPIB.Name = "lblClientPIB";
+            this.lblClientPIB.Size = new System.Drawing.Size(76, 16);
+            this.lblClientPIB.TabIndex = 9;
+            this.lblClientPIB.Text = "lblClientPIB";
+            // 
+            // lblClientAddress
+            // 
+            this.lblClientAddress.AutoSize = true;
+            this.lblClientAddress.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblClientAddress.Location = new System.Drawing.Point(32, 223);
+            this.lblClientAddress.Name = "lblClientAddress";
+            this.lblClientAddress.Size = new System.Drawing.Size(106, 16);
+            this.lblClientAddress.TabIndex = 10;
+            this.lblClientAddress.Text = "lblClientAddress";
+            // 
+            // gbClient
+            // 
+            this.gbClient.Controls.Add(this.tbClientAddress);
+            this.gbClient.Controls.Add(this.tbClientPIB);
+            this.gbClient.Controls.Add(this.tbClientName);
+            this.gbClient.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gbClient.Location = new System.Drawing.Point(21, 111);
+            this.gbClient.Name = "gbClient";
+            this.gbClient.Size = new System.Drawing.Size(438, 180);
+            this.gbClient.TabIndex = 8;
+            this.gbClient.TabStop = false;
+            this.gbClient.Text = "gbClient";
+            // 
+            // tbClientAddress
+            // 
+            this.tbClientAddress.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbClientAddress.Location = new System.Drawing.Point(143, 112);
+            this.tbClientAddress.Multiline = true;
+            this.tbClientAddress.Name = "tbClientAddress";
+            this.tbClientAddress.Size = new System.Drawing.Size(277, 62);
+            this.tbClientAddress.TabIndex = 2;
+            // 
+            // tbClientPIB
+            // 
+            this.tbClientPIB.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbClientPIB.Location = new System.Drawing.Point(143, 74);
+            this.tbClientPIB.Name = "tbClientPIB";
+            this.tbClientPIB.Size = new System.Drawing.Size(277, 22);
+            this.tbClientPIB.TabIndex = 1;
+            // 
+            // tbClientName
+            // 
+            this.tbClientName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbClientName.Location = new System.Drawing.Point(143, 35);
+            this.tbClientName.Name = "tbClientName";
+            this.tbClientName.Size = new System.Drawing.Size(277, 22);
+            this.tbClientName.TabIndex = 0;
+            // 
+            // bindingNavigator1
+            // 
+            this.bindingNavigator1.AddNewItem = this.bindingNavigatorAddNewItem;
+            this.bindingNavigator1.BindingSource = this.invoiceItemBindingSource;
+            this.bindingNavigator1.CountItem = this.bindingNavigatorCountItem;
+            this.bindingNavigator1.DeleteItem = this.bindingNavigatorDeleteItem;
+            this.bindingNavigator1.Dock = System.Windows.Forms.DockStyle.None;
+            this.bindingNavigator1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bindingNavigator1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.bindingNavigatorMoveFirstItem,
+            this.bindingNavigatorMovePreviousItem,
+            this.bindingNavigatorSeparator,
+            this.bindingNavigatorPositionItem,
+            this.bindingNavigatorCountItem,
+            this.bindingNavigatorSeparator1,
+            this.bindingNavigatorMoveNextItem,
+            this.bindingNavigatorMoveLastItem,
+            this.bindingNavigatorSeparator2,
+            this.bindingNavigatorAddNewItem,
+            this.bindingNavigatorDeleteItem});
+            this.bindingNavigator1.Location = new System.Drawing.Point(20, 499);
+            this.bindingNavigator1.MoveFirstItem = this.bindingNavigatorMoveFirstItem;
+            this.bindingNavigator1.MoveLastItem = this.bindingNavigatorMoveLastItem;
+            this.bindingNavigator1.MoveNextItem = this.bindingNavigatorMoveNextItem;
+            this.bindingNavigator1.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
+            this.bindingNavigator1.Name = "bindingNavigator1";
+            this.bindingNavigator1.PositionItem = this.bindingNavigatorPositionItem;
+            this.bindingNavigator1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
+            this.bindingNavigator1.Size = new System.Drawing.Size(266, 25);
+            this.bindingNavigator1.TabIndex = 14;
+            this.bindingNavigator1.Text = "bindingNavigator1";
+            // 
+            // bindingNavigatorAddNewItem
+            // 
+            this.bindingNavigatorAddNewItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorAddNewItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorAddNewItem.Image")));
+            this.bindingNavigatorAddNewItem.Name = "bindingNavigatorAddNewItem";
+            this.bindingNavigatorAddNewItem.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorAddNewItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorAddNewItem.Text = "Add new";
+            // 
+            // bindingNavigatorCountItem
+            // 
+            this.bindingNavigatorCountItem.Name = "bindingNavigatorCountItem";
+            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(39, 22);
+            this.bindingNavigatorCountItem.Text = "of {0}";
+            this.bindingNavigatorCountItem.ToolTipText = "Total number of items";
+            // 
+            // bindingNavigatorDeleteItem
+            // 
+            this.bindingNavigatorDeleteItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorDeleteItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorDeleteItem.Image")));
+            this.bindingNavigatorDeleteItem.Name = "bindingNavigatorDeleteItem";
+            this.bindingNavigatorDeleteItem.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorDeleteItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorDeleteItem.Text = "Delete";
+            // 
+            // bindingNavigatorMoveFirstItem
+            // 
+            this.bindingNavigatorMoveFirstItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorMoveFirstItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveFirstItem.Image")));
+            this.bindingNavigatorMoveFirstItem.Name = "bindingNavigatorMoveFirstItem";
+            this.bindingNavigatorMoveFirstItem.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorMoveFirstItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorMoveFirstItem.Text = "Move first";
+            // 
+            // bindingNavigatorMovePreviousItem
+            // 
+            this.bindingNavigatorMovePreviousItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorMovePreviousItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMovePreviousItem.Image")));
+            this.bindingNavigatorMovePreviousItem.Name = "bindingNavigatorMovePreviousItem";
+            this.bindingNavigatorMovePreviousItem.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorMovePreviousItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorMovePreviousItem.Text = "Move previous";
+            // 
+            // bindingNavigatorSeparator
+            // 
+            this.bindingNavigatorSeparator.Name = "bindingNavigatorSeparator";
+            this.bindingNavigatorSeparator.Size = new System.Drawing.Size(6, 25);
+            // 
+            // bindingNavigatorPositionItem
+            // 
+            this.bindingNavigatorPositionItem.AccessibleName = "Position";
+            this.bindingNavigatorPositionItem.AutoSize = false;
+            this.bindingNavigatorPositionItem.Name = "bindingNavigatorPositionItem";
+            this.bindingNavigatorPositionItem.Size = new System.Drawing.Size(57, 23);
+            this.bindingNavigatorPositionItem.Text = "0";
+            this.bindingNavigatorPositionItem.ToolTipText = "Current position";
+            // 
+            // bindingNavigatorSeparator1
+            // 
+            this.bindingNavigatorSeparator1.Name = "bindingNavigatorSeparator1";
+            this.bindingNavigatorSeparator1.Size = new System.Drawing.Size(6, 25);
+            // 
+            // bindingNavigatorMoveNextItem
+            // 
+            this.bindingNavigatorMoveNextItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorMoveNextItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveNextItem.Image")));
+            this.bindingNavigatorMoveNextItem.Name = "bindingNavigatorMoveNextItem";
+            this.bindingNavigatorMoveNextItem.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorMoveNextItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorMoveNextItem.Text = "Move next";
+            // 
+            // bindingNavigatorMoveLastItem
+            // 
+            this.bindingNavigatorMoveLastItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorMoveLastItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveLastItem.Image")));
+            this.bindingNavigatorMoveLastItem.Name = "bindingNavigatorMoveLastItem";
+            this.bindingNavigatorMoveLastItem.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorMoveLastItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorMoveLastItem.Text = "Move last";
+            // 
+            // bindingNavigatorSeparator2
+            // 
+            this.bindingNavigatorSeparator2.Name = "bindingNavigatorSeparator2";
+            this.bindingNavigatorSeparator2.Size = new System.Drawing.Size(6, 25);
+            // 
+            // btnPrint
+            // 
+            this.btnPrint.Location = new System.Drawing.Point(322, 530);
+            this.btnPrint.Name = "btnPrint";
+            this.btnPrint.Size = new System.Drawing.Size(75, 23);
+            this.btnPrint.TabIndex = 16;
+            this.btnPrint.Text = "btnPrint";
+            this.btnPrint.UseVisualStyleBackColor = true;
+            this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
+            // 
+            // AddInvoiceForm
+            // 
+            this.AcceptButton = this.btnSave;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.btnCancel;
+            this.ClientSize = new System.Drawing.Size(1049, 566);
+            this.Controls.Add(this.btnPrint);
+            this.Controls.Add(this.bindingNavigator1);
+            this.Controls.Add(this.lblClientAddress);
+            this.Controls.Add(this.lblClientPIB);
+            this.Controls.Add(this.dgInvoiceItems);
+            this.Controls.Add(this.btnCancel);
+            this.Controls.Add(this.btnSave);
+            this.Controls.Add(this.tbNote);
+            this.Controls.Add(this.cbLocations);
+            this.Controls.Add(this.dateInvoice);
+            this.Controls.Add(this.lblNote);
+            this.Controls.Add(this.lblInvoiceLocation);
+            this.Controls.Add(this.lblInvoiceDate);
+            this.Controls.Add(this.lblClientName);
+            this.Controls.Add(this.lblInvoiceNumber);
+            this.Controls.Add(this.tbInvoiceNumber);
+            this.Controls.Add(this.gbClient);
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.HelpButton = true;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Name = "AddInvoiceForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "AddInvoice";
+            this.Load += new System.EventHandler(this.AddInvoice_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.clientBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.invoiceTrackerDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.locationBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.invoiceBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgInvoiceItems)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.unitBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.invoiceItemBindingSource)).EndInit();
+            this.gbClient.ResumeLayout(false);
+            this.gbClient.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).EndInit();
+            this.bindingNavigator1.ResumeLayout(false);
+            this.bindingNavigator1.PerformLayout();
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
+        }
+
+        #endregion
+
+        private System.Windows.Forms.TextBox tbInvoiceNumber;
+        private System.Windows.Forms.Label lblInvoiceNumber;
+        private System.Windows.Forms.Label lblClientName;
+        private InvoiceTrackerDataSet invoiceTrackerDataSet;
+        private System.Windows.Forms.BindingSource clientBindingSource;
+        private InvoiceTrackerDataSetTableAdapters.ClientTableAdapter clientTableAdapter;
+        private System.Windows.Forms.Label lblInvoiceDate;
+        private System.Windows.Forms.Label lblInvoiceLocation;
+        private System.Windows.Forms.Label lblNote;
+        private System.Windows.Forms.DateTimePicker dateInvoice;
+        private System.Windows.Forms.ComboBox cbLocations;
+        private System.Windows.Forms.TextBox tbNote;
+        private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.BindingSource locationBindingSource;
+        private InvoiceTrackerDataSetTableAdapters.LocationTableAdapter locationTableAdapter;
+        private InvoiceTrackerDataSetTableAdapters.InvoiceTableAdapter invoiceTableAdapter;
+        private System.Windows.Forms.BindingSource invoiceBindingSource;
+        private System.Windows.Forms.DataGridView dgInvoiceItems;
+        private System.Windows.Forms.BindingSource invoiceItemBindingSource;
+        private InvoiceTrackerDataSetTableAdapters.InvoiceItemTableAdapter invoiceItemTableAdapter;
+        private System.Windows.Forms.BindingSource unitBindingSource;
+        private InvoiceTrackerDataSetTableAdapters.UnitTableAdapter unitTableAdapter;
+        private System.Windows.Forms.Label lblClientPIB;
+        private System.Windows.Forms.Label lblClientAddress;
+        private System.Windows.Forms.GroupBox gbClient;
+        private System.Windows.Forms.TextBox tbClientAddress;
+        private System.Windows.Forms.TextBox tbClientPIB;
+        private System.Windows.Forms.TextBox tbClientName;
+        private System.Windows.Forms.FontDialog fontDialog1;
+        private System.Windows.Forms.BindingNavigator bindingNavigator1;
+        private System.Windows.Forms.ToolStripButton bindingNavigatorAddNewItem;
+        private System.Windows.Forms.ToolStripLabel bindingNavigatorCountItem;
+        private System.Windows.Forms.ToolStripButton bindingNavigatorDeleteItem;
+        private System.Windows.Forms.ToolStripButton bindingNavigatorMoveFirstItem;
+        private System.Windows.Forms.ToolStripButton bindingNavigatorMovePreviousItem;
+        private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator;
+        private System.Windows.Forms.ToolStripTextBox bindingNavigatorPositionItem;
+        private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator1;
+        private System.Windows.Forms.ToolStripButton bindingNavigatorMoveNextItem;
+        private System.Windows.Forms.ToolStripButton bindingNavigatorMoveLastItem;
+        private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ItemIDColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn InvoiceIDColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DescriptionColumn;
+        private System.Windows.Forms.DataGridViewComboBoxColumn UnitIDColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn UnitPriceColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn QuantityColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ValueColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn VATColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn VatSumColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TotalColumn;
+        private System.Windows.Forms.Button btnPrint;
+    }
+}
