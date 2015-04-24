@@ -54,8 +54,9 @@ WHERE        (Invoice.InvoiceID = [@InvoiceID])</CommandText>
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        InvoiceItem.InvoiceID, InvoiceItem.Description, Unit.FullName, InvoiceItem.Quantity, InvoiceItem.UnitPrice, InvoiceItem.VAT, 
-                         InvoiceItem.Quantity * InvoiceItem.UnitPrice AS [Value], InvoiceItem.Quantity * InvoiceItem.UnitPrice * InvoiceItem.VAT/100 AS VATSum, 
-                         (InvoiceItem.Quantity * InvoiceItem.UnitPrice) * (1 + InvoiceItem.VAT / 100) AS Total
+                         InvoiceItem.Quantity * InvoiceItem.UnitPrice AS [Value], InvoiceItem.Quantity * InvoiceItem.UnitPrice * InvoiceItem.VAT / 100 AS VATSum, 
+                         (InvoiceItem.Quantity * InvoiceItem.UnitPrice) * (1 + InvoiceItem.VAT / 100) AS Total, DCOUNT('ItemID', 'InvoiceItem', 
+                         'InvoiceID = ' &amp; InvoiceItem.InvoiceID &amp; ' AND ItemID &lt;=' &amp; InvoiceItem.ItemID) AS RowNumber
 FROM            (InvoiceItem INNER JOIN
                          Unit ON InvoiceItem.UnitID = Unit.UnitID)</CommandText>
                     <Parameters />
@@ -73,6 +74,7 @@ FROM            (InvoiceItem INNER JOIN
               <Mapping SourceColumn="VATSum" DataSetColumn="VATSum" />
               <Mapping SourceColumn="Total" DataSetColumn="Total" />
               <Mapping SourceColumn="InvoiceID" DataSetColumn="InvoiceID" />
+              <Mapping SourceColumn="RowNumber" DataSetColumn="RowNumber" />
             </Mappings>
             <Sources>
               <DbSource ConnectionRef="InvoiceTrackerConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="FillByInvoiceID" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataByInvoiceID" GeneratorSourceName="FillByInvoiceID" GetMethodModifier="Public" GetMethodName="GetDataByInvoiceID" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataByInvoiceID" UserSourceName="FillByInvoiceID">
@@ -80,7 +82,8 @@ FROM            (InvoiceItem INNER JOIN
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        InvoiceItem.InvoiceID, InvoiceItem.Description, Unit.FullName, InvoiceItem.Quantity, InvoiceItem.UnitPrice, InvoiceItem.VAT, 
                          InvoiceItem.Quantity * InvoiceItem.UnitPrice AS [Value], InvoiceItem.Quantity * InvoiceItem.UnitPrice * InvoiceItem.VAT / 100 AS VATSum, 
-                         (InvoiceItem.Quantity * InvoiceItem.UnitPrice) * (1 + InvoiceItem.VAT / 100) AS Total
+                         (InvoiceItem.Quantity * InvoiceItem.UnitPrice) * (1 + InvoiceItem.VAT / 100) AS Total, DCOUNT('ItemID', 'InvoiceItem', 
+                         'InvoiceID = ' &amp; [@InvoiceID] &amp; ' AND ItemID &lt;=' &amp; InvoiceItem.ItemID) AS RowNumber
 FROM            (InvoiceItem INNER JOIN
                          Unit ON InvoiceItem.UnitID = Unit.UnitID)
 WHERE        (InvoiceItem.InvoiceID = [@InvoiceID])</CommandText>
@@ -100,7 +103,7 @@ WHERE        (InvoiceItem.InvoiceID = [@InvoiceID])</CommandText>
   <xs:element name="ReportDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="ReportDataSet" msprop:Generator_UserDSName="ReportDataSet">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="Invoice" msprop:Generator_TableClassName="InvoiceDataTable" msprop:Generator_TableVarName="tableInvoice" msprop:Generator_RowChangedName="InvoiceRowChanged" msprop:Generator_TablePropName="Invoice" msprop:Generator_RowDeletingName="InvoiceRowDeleting" msprop:Generator_RowChangingName="InvoiceRowChanging" msprop:Generator_RowEvHandlerName="InvoiceRowChangeEventHandler" msprop:Generator_RowDeletedName="InvoiceRowDeleted" msprop:Generator_RowClassName="InvoiceRow" msprop:Generator_UserTableName="Invoice" msprop:Generator_RowEvArgName="InvoiceRowChangeEvent">
+        <xs:element name="Invoice" msprop:Generator_TableClassName="InvoiceDataTable" msprop:Generator_TableVarName="tableInvoice" msprop:Generator_TablePropName="Invoice" msprop:Generator_RowDeletingName="InvoiceRowDeleting" msprop:Generator_RowChangingName="InvoiceRowChanging" msprop:Generator_RowEvHandlerName="InvoiceRowChangeEventHandler" msprop:Generator_RowDeletedName="InvoiceRowDeleted" msprop:Generator_UserTableName="Invoice" msprop:Generator_RowChangedName="InvoiceRowChanged" msprop:Generator_RowEvArgName="InvoiceRowChangeEvent" msprop:Generator_RowClassName="InvoiceRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="InvoiceDate" msprop:Generator_ColumnVarNameInTable="columnInvoiceDate" msprop:Generator_ColumnPropNameInRow="InvoiceDate" msprop:Generator_ColumnPropNameInTable="InvoiceDateColumn" msprop:Generator_UserColumnName="InvoiceDate" type="xs:dateTime" minOccurs="0" />
@@ -143,7 +146,7 @@ WHERE        (InvoiceItem.InvoiceID = [@InvoiceID])</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="InvoiceItems" msprop:Generator_TableClassName="InvoiceItemsDataTable" msprop:Generator_TableVarName="tableInvoiceItems" msprop:Generator_RowChangedName="InvoiceItemsRowChanged" msprop:Generator_TablePropName="InvoiceItems" msprop:Generator_RowDeletingName="InvoiceItemsRowDeleting" msprop:Generator_RowChangingName="InvoiceItemsRowChanging" msprop:Generator_RowEvHandlerName="InvoiceItemsRowChangeEventHandler" msprop:Generator_RowDeletedName="InvoiceItemsRowDeleted" msprop:Generator_RowClassName="InvoiceItemsRow" msprop:Generator_UserTableName="InvoiceItems" msprop:Generator_RowEvArgName="InvoiceItemsRowChangeEvent">
+        <xs:element name="InvoiceItems" msprop:Generator_TableClassName="InvoiceItemsDataTable" msprop:Generator_TableVarName="tableInvoiceItems" msprop:Generator_TablePropName="InvoiceItems" msprop:Generator_RowDeletingName="InvoiceItemsRowDeleting" msprop:Generator_RowChangingName="InvoiceItemsRowChanging" msprop:Generator_RowEvHandlerName="InvoiceItemsRowChangeEventHandler" msprop:Generator_RowDeletedName="InvoiceItemsRowDeleted" msprop:Generator_UserTableName="InvoiceItems" msprop:Generator_RowChangedName="InvoiceItemsRowChanged" msprop:Generator_RowEvArgName="InvoiceItemsRowChangeEvent" msprop:Generator_RowClassName="InvoiceItemsRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Description" msprop:Generator_ColumnVarNameInTable="columnDescription" msprop:Generator_ColumnPropNameInRow="Description" msprop:Generator_ColumnPropNameInTable="DescriptionColumn" msprop:Generator_UserColumnName="Description" minOccurs="0">
@@ -167,6 +170,7 @@ WHERE        (InvoiceItem.InvoiceID = [@InvoiceID])</CommandText>
               <xs:element name="VATSum" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnVATSum" msprop:Generator_ColumnPropNameInRow="VATSum" msprop:Generator_ColumnPropNameInTable="VATSumColumn" msprop:Generator_UserColumnName="VATSum" type="xs:decimal" minOccurs="0" />
               <xs:element name="Total" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnTotal" msprop:Generator_ColumnPropNameInRow="Total" msprop:Generator_ColumnPropNameInTable="TotalColumn" msprop:Generator_UserColumnName="Total" type="xs:decimal" minOccurs="0" />
               <xs:element name="InvoiceID" msprop:Generator_ColumnVarNameInTable="columnInvoiceID" msprop:Generator_ColumnPropNameInRow="InvoiceID" msprop:Generator_ColumnPropNameInTable="InvoiceIDColumn" msprop:Generator_UserColumnName="InvoiceID" type="xs:int" minOccurs="0" />
+              <xs:element name="RowNumber" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnRowNumber" msprop:Generator_ColumnPropNameInRow="RowNumber" msprop:Generator_ColumnPropNameInTable="RowNumberColumn" msprop:Generator_UserColumnName="RowNumber" type="xs:int" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -175,7 +179,7 @@ WHERE        (InvoiceItem.InvoiceID = [@InvoiceID])</CommandText>
   </xs:element>
   <xs:annotation>
     <xs:appinfo>
-      <msdata:Relationship name="Invoice_InvoiceItems" msdata:parent="Invoice" msdata:child="InvoiceItems" msdata:parentkey="InvoiceID" msdata:childkey="InvoiceID" msprop:Generator_UserChildTable="InvoiceItems" msprop:Generator_ChildPropName="GetInvoiceItemsRows" msprop:Generator_UserRelationName="Invoice_InvoiceItems" msprop:Generator_RelationVarName="relationInvoice_InvoiceItems" msprop:Generator_UserParentTable="Invoice" msprop:Generator_ParentPropName="InvoiceRow" />
+      <msdata:Relationship name="Invoice_InvoiceItems" msdata:parent="Invoice" msdata:child="InvoiceItems" msdata:parentkey="InvoiceID" msdata:childkey="InvoiceID" msprop:Generator_UserChildTable="InvoiceItems" msprop:Generator_ChildPropName="GetInvoiceItemsRows" msprop:Generator_UserRelationName="Invoice_InvoiceItems" msprop:Generator_ParentPropName="InvoiceRow" msprop:Generator_RelationVarName="relationInvoice_InvoiceItems" msprop:Generator_UserParentTable="Invoice" />
     </xs:appinfo>
   </xs:annotation>
 </xs:schema>

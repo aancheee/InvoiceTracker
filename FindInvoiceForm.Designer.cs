@@ -35,6 +35,12 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FindInvoiceForm));
             this.dgInvoices = new System.Windows.Forms.DataGridView();
+            this.InvoiceDateColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ClientNameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ClientPIBColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LocationNameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.InvoiceIDColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EditInvoiceButtonColumn = new System.Windows.Forms.DataGridViewImageColumn();
             this.findInvoiceDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.findInvoiceDataSet = new InvoiceTracker.FindInvoiceDataSet();
             this.findInvoiceQueryTableAdapter = new InvoiceTracker.FindInvoiceDataSetTableAdapters.FindInvoiceQueryTableAdapter();
@@ -57,12 +63,6 @@
             this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.btnClose = new System.Windows.Forms.Button();
             this.invoiceTrackerDataSet1 = new InvoiceTracker.InvoiceTrackerDataSet();
-            this.InvoiceDateColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ClientNameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ClientPIBColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.LocationNameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.InvoiceIDColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.EditInvoiceButtonColumn = new System.Windows.Forms.DataGridViewImageColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgInvoices)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.findInvoiceDataSetBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.findInvoiceDataSet)).BeginInit();
@@ -105,7 +105,7 @@
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgInvoices.DefaultCellStyle = dataGridViewCellStyle3;
-            this.dgInvoices.Location = new System.Drawing.Point(13, 138);
+            this.dgInvoices.Location = new System.Drawing.Point(13, 127);
             this.dgInvoices.Name = "dgInvoices";
             this.dgInvoices.ReadOnly = true;
             this.dgInvoices.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
@@ -117,10 +117,65 @@
             dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgInvoices.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            this.dgInvoices.RowTemplate.Height = 30;
             this.dgInvoices.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgInvoices.Size = new System.Drawing.Size(658, 246);
+            this.dgInvoices.Size = new System.Drawing.Size(659, 260);
             this.dgInvoices.TabIndex = 1;
             this.dgInvoices.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgInvoices_CellClick);
+            // 
+            // InvoiceDateColumn
+            // 
+            this.InvoiceDateColumn.DataPropertyName = "InvoiceDate";
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.Format = "dd-MM-yyyy";
+            dataGridViewCellStyle2.NullValue = null;
+            this.InvoiceDateColumn.DefaultCellStyle = dataGridViewCellStyle2;
+            this.InvoiceDateColumn.HeaderText = "InvoiceDate";
+            this.InvoiceDateColumn.Name = "InvoiceDateColumn";
+            this.InvoiceDateColumn.ReadOnly = true;
+            this.InvoiceDateColumn.Width = 125;
+            // 
+            // ClientNameColumn
+            // 
+            this.ClientNameColumn.DataPropertyName = "ClientName";
+            this.ClientNameColumn.HeaderText = "ClientName";
+            this.ClientNameColumn.Name = "ClientNameColumn";
+            this.ClientNameColumn.ReadOnly = true;
+            this.ClientNameColumn.Width = 125;
+            // 
+            // ClientPIBColumn
+            // 
+            this.ClientPIBColumn.DataPropertyName = "ClientPIB";
+            this.ClientPIBColumn.HeaderText = "ClientPIB";
+            this.ClientPIBColumn.Name = "ClientPIBColumn";
+            this.ClientPIBColumn.ReadOnly = true;
+            this.ClientPIBColumn.Width = 125;
+            // 
+            // LocationNameColumn
+            // 
+            this.LocationNameColumn.DataPropertyName = "LocationName";
+            this.LocationNameColumn.HeaderText = "LocationName";
+            this.LocationNameColumn.Name = "LocationNameColumn";
+            this.LocationNameColumn.ReadOnly = true;
+            this.LocationNameColumn.Width = 125;
+            // 
+            // InvoiceIDColumn
+            // 
+            this.InvoiceIDColumn.DataPropertyName = "InvoiceID";
+            this.InvoiceIDColumn.HeaderText = "InvoiceID";
+            this.InvoiceIDColumn.Name = "InvoiceIDColumn";
+            this.InvoiceIDColumn.ReadOnly = true;
+            this.InvoiceIDColumn.Visible = false;
+            this.InvoiceIDColumn.Width = 125;
+            // 
+            // EditInvoiceButtonColumn
+            // 
+            this.EditInvoiceButtonColumn.HeaderText = "Edit";
+            this.EditInvoiceButtonColumn.Image = ((System.Drawing.Image)(resources.GetObject("EditInvoiceButtonColumn.Image")));
+            this.EditInvoiceButtonColumn.Name = "EditInvoiceButtonColumn";
+            this.EditInvoiceButtonColumn.ReadOnly = true;
+            this.EditInvoiceButtonColumn.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.EditInvoiceButtonColumn.Width = 75;
             // 
             // findInvoiceDataSetBindingSource
             // 
@@ -220,7 +275,7 @@
             this.bindingNavigatorMoveNextItem,
             this.bindingNavigatorMoveLastItem,
             this.bindingNavigatorSeparator2});
-            this.bnFindInvoice.Location = new System.Drawing.Point(9, 387);
+            this.bnFindInvoice.Location = new System.Drawing.Point(9, 390);
             this.bnFindInvoice.MoveFirstItem = this.bindingNavigatorMoveFirstItem;
             this.bnFindInvoice.MoveLastItem = this.bindingNavigatorMoveLastItem;
             this.bnFindInvoice.MoveNextItem = this.bindingNavigatorMoveNextItem;
@@ -302,7 +357,7 @@
             // 
             this.btnClose.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnClose.Location = new System.Drawing.Point(305, 430);
+            this.btnClose.Location = new System.Drawing.Point(306, 427);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(75, 23);
             this.btnClose.TabIndex = 3;
@@ -315,70 +370,17 @@
             this.invoiceTrackerDataSet1.DataSetName = "InvoiceTrackerDataSet";
             this.invoiceTrackerDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
-            // InvoiceDateColumn
-            // 
-            this.InvoiceDateColumn.DataPropertyName = "InvoiceDate";
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.Format = "dd-MM-yyyy";
-            dataGridViewCellStyle2.NullValue = null;
-            this.InvoiceDateColumn.DefaultCellStyle = dataGridViewCellStyle2;
-            this.InvoiceDateColumn.HeaderText = "InvoiceDate";
-            this.InvoiceDateColumn.Name = "InvoiceDateColumn";
-            this.InvoiceDateColumn.ReadOnly = true;
-            this.InvoiceDateColumn.Width = 125;
-            // 
-            // ClientNameColumn
-            // 
-            this.ClientNameColumn.DataPropertyName = "ClientName";
-            this.ClientNameColumn.HeaderText = "ClientName";
-            this.ClientNameColumn.Name = "ClientNameColumn";
-            this.ClientNameColumn.ReadOnly = true;
-            this.ClientNameColumn.Width = 125;
-            // 
-            // ClientPIBColumn
-            // 
-            this.ClientPIBColumn.DataPropertyName = "ClientPIB";
-            this.ClientPIBColumn.HeaderText = "ClientPIB";
-            this.ClientPIBColumn.Name = "ClientPIBColumn";
-            this.ClientPIBColumn.ReadOnly = true;
-            this.ClientPIBColumn.Width = 125;
-            // 
-            // LocationNameColumn
-            // 
-            this.LocationNameColumn.DataPropertyName = "LocationName";
-            this.LocationNameColumn.HeaderText = "LocationName";
-            this.LocationNameColumn.Name = "LocationNameColumn";
-            this.LocationNameColumn.ReadOnly = true;
-            this.LocationNameColumn.Width = 125;
-            // 
-            // InvoiceIDColumn
-            // 
-            this.InvoiceIDColumn.DataPropertyName = "InvoiceID";
-            this.InvoiceIDColumn.HeaderText = "InvoiceID";
-            this.InvoiceIDColumn.Name = "InvoiceIDColumn";
-            this.InvoiceIDColumn.ReadOnly = true;
-            this.InvoiceIDColumn.Visible = false;
-            this.InvoiceIDColumn.Width = 125;
-            // 
-            // EditInvoiceButtonColumn
-            // 
-            this.EditInvoiceButtonColumn.HeaderText = "Edit";
-            this.EditInvoiceButtonColumn.Image = ((System.Drawing.Image)(resources.GetObject("EditInvoiceButtonColumn.Image")));
-            this.EditInvoiceButtonColumn.Name = "EditInvoiceButtonColumn";
-            this.EditInvoiceButtonColumn.ReadOnly = true;
-            this.EditInvoiceButtonColumn.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.EditInvoiceButtonColumn.Width = 50;
-            // 
             // FindInvoiceForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnClose;
-            this.ClientSize = new System.Drawing.Size(683, 465);
+            this.ClientSize = new System.Drawing.Size(684, 462);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.bnFindInvoice);
             this.Controls.Add(this.gbFindInvoice);
             this.Controls.Add(this.dgInvoices);
+            this.MinimumSize = new System.Drawing.Size(700, 500);
             this.Name = "FindInvoiceForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "FindInvoiceForm";

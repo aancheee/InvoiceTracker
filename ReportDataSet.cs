@@ -6,6 +6,9 @@
 }
 
 namespace InvoiceTracker.ReportDataSetTableAdapters {
+    partial class InvoiceItemsTableAdapter
+    {
+    }
     
     
     public partial class InvoiceTableAdapter {

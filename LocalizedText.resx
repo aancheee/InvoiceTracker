@@ -210,4 +210,10 @@
   <data name="VATSum" xml:space="preserve">
     <value>VAT Sum</value>
   </data>
+  <data name="Print" xml:space="preserve">
+    <value>Print</value>
+  </data>
+  <data name="FieldTypeNumber" xml:space="preserve">
+    <value>This field can contain numbers only!</value>
+  </data>
 </root>

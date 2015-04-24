@@ -45,11 +45,16 @@ namespace InvoiceTracker
             invoiceItemsAdapter.FillByInvoiceID(invoiceItemsTable, _InvoiceID);
 
             ReportDataSource invoiceDataSource = new ReportDataSource("Invoice", (DataTable)invoiceTable);
+            ReportDataSource invoiceItemsDataSource = new ReportDataSource("InvoiceItems", (DataTable)invoiceItemsTable);
+
             this.InvoiceReportViewer.LocalReport.DataSources.Clear();
             this.InvoiceReportViewer.LocalReport.DataSources.Add(invoiceDataSource);
+            this.InvoiceReportViewer.LocalReport.DataSources.Add(invoiceItemsDataSource);
 
             this.InvoiceReportViewer.LocalReport.Refresh();
             this.InvoiceReportViewer.RefreshReport();
+
+            this.Text = LocalizedText.Invoice;
         }
 
     }

@@ -136,7 +136,7 @@
     <value>Opis</value>
   </data>
   <data name="Error" xml:space="preserve">
-    <value>Greška</value>
+    <value>Greška!</value>
   </data>
   <data name="Exit" xml:space="preserve">
     <value>Izlaz</value>
@@ -209,5 +209,11 @@
   </data>
   <data name="VATSum" xml:space="preserve">
     <value>PDV suma</value>
+  </data>
+  <data name="Print" xml:space="preserve">
+    <value>Štampa</value>
+  </data>
+  <data name="FieldTypeNumber" xml:space="preserve">
+    <value>Polje može da sadrži isključivo brojeve!</value>
   </data>
 </root>

@@ -160,6 +160,15 @@ namespace InvoiceTracker {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to This field can contain numbers only!.
+        /// </summary>
+        internal static string FieldTypeNumber {
+            get {
+                return ResourceManager.GetString("FieldTypeNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Please fill all the required fields..
         /// </summary>
         internal static string FillRequiredFields {
@@ -255,6 +264,15 @@ namespace InvoiceTracker {
         internal static string PIB {
             get {
                 return ResourceManager.GetString("PIB", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Print.
+        /// </summary>
+        internal static string Print {
+            get {
+                return ResourceManager.GetString("Print", resourceCulture);
             }
         }
         

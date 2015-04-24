@@ -675,6 +675,8 @@ namespace InvoiceTracker {
             
             private global::System.Data.DataColumn columnInvoiceID;
             
+            private global::System.Data.DataColumn columnRowNumber;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public InvoiceItemsDataTable() {
@@ -782,6 +784,14 @@ namespace InvoiceTracker {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn RowNumberColumn {
+                get {
+                    return this.columnRowNumber;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -817,7 +827,7 @@ namespace InvoiceTracker {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public InvoiceItemsRow AddInvoiceItemsRow(string Description, string FullName, decimal Quantity, decimal UnitPrice, decimal VAT, decimal Value, decimal VATSum, decimal Total, InvoiceRow parentInvoiceRowByInvoice_InvoiceItems) {
+            public InvoiceItemsRow AddInvoiceItemsRow(string Description, string FullName, decimal Quantity, decimal UnitPrice, decimal VAT, decimal Value, decimal VATSum, decimal Total, InvoiceRow parentInvoiceRowByInvoice_InvoiceItems, int RowNumber) {
                 InvoiceItemsRow rowInvoiceItemsRow = ((InvoiceItemsRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         Description,
@@ -828,7 +838,8 @@ namespace InvoiceTracker {
                         Value,
                         VATSum,
                         Total,
-                        null};
+                        null,
+                        RowNumber};
                 if ((parentInvoiceRowByInvoice_InvoiceItems != null)) {
                     columnValuesArray[8] = parentInvoiceRowByInvoice_InvoiceItems[6];
                 }
@@ -863,6 +874,7 @@ namespace InvoiceTracker {
                 this.columnVATSum = base.Columns["VATSum"];
                 this.columnTotal = base.Columns["Total"];
                 this.columnInvoiceID = base.Columns["InvoiceID"];
+                this.columnRowNumber = base.Columns["RowNumber"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -886,11 +898,14 @@ namespace InvoiceTracker {
                 base.Columns.Add(this.columnTotal);
                 this.columnInvoiceID = new global::System.Data.DataColumn("InvoiceID", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnInvoiceID);
+                this.columnRowNumber = new global::System.Data.DataColumn("RowNumber", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnRowNumber);
                 this.columnDescription.MaxLength = 255;
                 this.columnFullName.MaxLength = 255;
                 this.columnValue.ReadOnly = true;
                 this.columnVATSum.ReadOnly = true;
                 this.columnTotal.ReadOnly = true;
+                this.columnRowNumber.ReadOnly = true;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1399,6 +1414,22 @@ namespace InvoiceTracker {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int RowNumber {
+                get {
+                    try {
+                        return ((int)(this[this.tableInvoiceItems.RowNumberColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'RowNumber\' in table \'InvoiceItems\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableInvoiceItems.RowNumberColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public InvoiceRow InvoiceRow {
                 get {
                     return ((InvoiceRow)(this.GetParentRow(this.Table.ParentRelations["Invoice_InvoiceItems"])));
@@ -1514,6 +1545,18 @@ namespace InvoiceTracker {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetInvoiceIDNull() {
                 this[this.tableInvoiceItems.InvoiceIDColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsRowNumberNull() {
+                return this.IsNull(this.tableInvoiceItems.RowNumberColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetRowNumberNull() {
+                this[this.tableInvoiceItems.RowNumberColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -1930,6 +1973,7 @@ WHERE        (Invoice.InvoiceID = [@InvoiceID])";
             tableMapping.ColumnMappings.Add("VATSum", "VATSum");
             tableMapping.ColumnMappings.Add("Total", "Total");
             tableMapping.ColumnMappings.Add("InvoiceID", "InvoiceID");
+            tableMapping.ColumnMappings.Add("RowNumber", "RowNumber");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -1947,8 +1991,9 @@ WHERE        (Invoice.InvoiceID = [@InvoiceID])";
             this._commandCollection[0] = new global::System.Data.OleDb.OleDbCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = @"SELECT        InvoiceItem.InvoiceID, InvoiceItem.Description, Unit.FullName, InvoiceItem.Quantity, InvoiceItem.UnitPrice, InvoiceItem.VAT, 
-                         InvoiceItem.Quantity * InvoiceItem.UnitPrice AS [Value], InvoiceItem.Quantity * InvoiceItem.UnitPrice * InvoiceItem.VAT/100 AS VATSum, 
-                         (InvoiceItem.Quantity * InvoiceItem.UnitPrice) * (1 + InvoiceItem.VAT / 100) AS Total
+                         InvoiceItem.Quantity * InvoiceItem.UnitPrice AS [Value], InvoiceItem.Quantity * InvoiceItem.UnitPrice * InvoiceItem.VAT / 100 AS VATSum, 
+                         (InvoiceItem.Quantity * InvoiceItem.UnitPrice) * (1 + InvoiceItem.VAT / 100) AS Total, DCOUNT('ItemID', 'InvoiceItem', 
+                         'InvoiceID = ' & InvoiceItem.InvoiceID & ' AND ItemID <=' & InvoiceItem.ItemID) AS RowNumber
 FROM            (InvoiceItem INNER JOIN
                          Unit ON InvoiceItem.UnitID = Unit.UnitID)";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
@@ -1956,7 +2001,8 @@ FROM            (InvoiceItem INNER JOIN
             this._commandCollection[1].Connection = this.Connection;
             this._commandCollection[1].CommandText = @"SELECT        InvoiceItem.InvoiceID, InvoiceItem.Description, Unit.FullName, InvoiceItem.Quantity, InvoiceItem.UnitPrice, InvoiceItem.VAT, 
                          InvoiceItem.Quantity * InvoiceItem.UnitPrice AS [Value], InvoiceItem.Quantity * InvoiceItem.UnitPrice * InvoiceItem.VAT / 100 AS VATSum, 
-                         (InvoiceItem.Quantity * InvoiceItem.UnitPrice) * (1 + InvoiceItem.VAT / 100) AS Total
+                         (InvoiceItem.Quantity * InvoiceItem.UnitPrice) * (1 + InvoiceItem.VAT / 100) AS Total, DCOUNT('ItemID', 'InvoiceItem', 
+                         'InvoiceID = ' & [@InvoiceID] & ' AND ItemID <=' & InvoiceItem.ItemID) AS RowNumber
 FROM            (InvoiceItem INNER JOIN
                          Unit ON InvoiceItem.UnitID = Unit.UnitID)
 WHERE        (InvoiceItem.InvoiceID = [@InvoiceID])";
