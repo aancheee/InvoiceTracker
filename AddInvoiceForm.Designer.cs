@@ -29,15 +29,15 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddInvoiceForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tbInvoiceNumber = new System.Windows.Forms.TextBox();
             this.lblInvoiceNumber = new System.Windows.Forms.Label();
             this.lblClientName = new System.Windows.Forms.Label();
@@ -57,13 +57,24 @@
             this.invoiceTableAdapter = new InvoiceTracker.InvoiceTrackerDataSetTableAdapters.InvoiceTableAdapter();
             this.invoiceBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dgInvoiceItems = new System.Windows.Forms.DataGridView();
+            this.ItemIDColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.InvoiceIDColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DescriptionColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UnitIDColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.unitBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.UnitPriceColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.QuantityColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ValueColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.VATColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.VatSumColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TotalColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.invoiceItemBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.invoiceItemTableAdapter = new InvoiceTracker.InvoiceTrackerDataSetTableAdapters.InvoiceItemTableAdapter();
             this.unitTableAdapter = new InvoiceTracker.InvoiceTrackerDataSetTableAdapters.UnitTableAdapter();
             this.lblClientPIB = new System.Windows.Forms.Label();
             this.lblClientAddress = new System.Windows.Forms.Label();
             this.gbClient = new System.Windows.Forms.GroupBox();
+            this.btnChooseClient = new System.Windows.Forms.Button();
             this.tbClientAddress = new System.Windows.Forms.TextBox();
             this.tbClientPIB = new System.Windows.Forms.TextBox();
             this.tbClientName = new System.Windows.Forms.TextBox();
@@ -83,16 +94,12 @@
             this.btnPrint = new System.Windows.Forms.Button();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.statusLabel = new System.Windows.Forms.ToolStripStatusLabel();
-            this.ItemIDColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.InvoiceIDColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DescriptionColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.UnitIDColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.UnitPriceColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.QuantityColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ValueColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.VATColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.VatSumColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TotalColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cbInvoiceTypes = new System.Windows.Forms.ComboBox();
+            this.invoiceTypeBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.lblInvoiceType = new System.Windows.Forms.Label();
+            this.invoiceTypeTableAdapter = new InvoiceTracker.InvoiceTrackerDataSetTableAdapters.InvoiceTypeTableAdapter();
+            this.lblTurnoverDate = new System.Windows.Forms.Label();
+            this.dateTurnover = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.clientBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.invoiceTrackerDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.locationBindingSource)).BeginInit();
@@ -104,6 +111,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).BeginInit();
             this.bindingNavigator1.SuspendLayout();
             this.statusStrip.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.invoiceTypeBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // tbInvoiceNumber
@@ -128,10 +136,10 @@
             // lblClientName
             // 
             this.lblClientName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblClientName.Location = new System.Drawing.Point(12, 23);
+            this.lblClientName.Location = new System.Drawing.Point(12, 53);
             this.lblClientName.Name = "lblClientName";
             this.lblClientName.Size = new System.Drawing.Size(134, 29);
-            this.lblClientName.TabIndex = 7;
+            this.lblClientName.TabIndex = 1;
             this.lblClientName.Text = "lblClientName";
             // 
             // clientBindingSource
@@ -154,7 +162,7 @@
             this.lblInvoiceDate.Location = new System.Drawing.Point(17, 66);
             this.lblInvoiceDate.Name = "lblInvoiceDate";
             this.lblInvoiceDate.Size = new System.Drawing.Size(134, 29);
-            this.lblInvoiceDate.TabIndex = 2;
+            this.lblInvoiceDate.TabIndex = 4;
             this.lblInvoiceDate.Text = "lblInvoiceDate";
             // 
             // lblInvoiceLocation
@@ -163,7 +171,7 @@
             this.lblInvoiceLocation.Location = new System.Drawing.Point(517, 61);
             this.lblInvoiceLocation.Name = "lblInvoiceLocation";
             this.lblInvoiceLocation.Size = new System.Drawing.Size(134, 29);
-            this.lblInvoiceLocation.TabIndex = 4;
+            this.lblInvoiceLocation.TabIndex = 6;
             this.lblInvoiceLocation.Text = "lblInvoiceLocation";
             // 
             // lblNote
@@ -171,7 +179,7 @@
             this.lblNote.Location = new System.Drawing.Point(517, 126);
             this.lblNote.Name = "lblNote";
             this.lblNote.Size = new System.Drawing.Size(134, 29);
-            this.lblNote.TabIndex = 10;
+            this.lblNote.TabIndex = 9;
             this.lblNote.Text = "lblNote";
             // 
             // dateInvoice
@@ -182,7 +190,7 @@
             this.dateInvoice.Location = new System.Drawing.Point(164, 61);
             this.dateInvoice.Name = "dateInvoice";
             this.dateInvoice.Size = new System.Drawing.Size(277, 22);
-            this.dateInvoice.TabIndex = 3;
+            this.dateInvoice.TabIndex = 5;
             // 
             // cbLocations
             // 
@@ -195,7 +203,7 @@
             this.cbLocations.Location = new System.Drawing.Point(657, 58);
             this.cbLocations.Name = "cbLocations";
             this.cbLocations.Size = new System.Drawing.Size(277, 24);
-            this.cbLocations.TabIndex = 5;
+            this.cbLocations.TabIndex = 7;
             this.cbLocations.ValueMember = "LocationID";
             // 
             // locationBindingSource
@@ -209,17 +217,17 @@
             this.tbNote.Multiline = true;
             this.tbNote.Name = "tbNote";
             this.tbNote.Size = new System.Drawing.Size(277, 84);
-            this.tbNote.TabIndex = 11;
+            this.tbNote.TabIndex = 10;
             // 
             // btnSave
             // 
             this.btnSave.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnSave.AutoEllipsis = true;
             this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSave.Location = new System.Drawing.Point(459, 515);
+            this.btnSave.Location = new System.Drawing.Point(459, 546);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
-            this.btnSave.TabIndex = 15;
+            this.btnSave.TabIndex = 16;
             this.btnSave.Text = "btn&Save";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
@@ -229,10 +237,10 @@
             this.btnCancel.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancel.Location = new System.Drawing.Point(545, 515);
+            this.btnCancel.Location = new System.Drawing.Point(545, 546);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
-            this.btnCancel.TabIndex = 16;
+            this.btnCancel.TabIndex = 17;
             this.btnCancel.Text = "btn&Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
@@ -252,8 +260,8 @@
             // 
             // dgInvoiceItems
             // 
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dgInvoiceItems.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgInvoiceItems.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle9;
             this.dgInvoiceItems.AutoGenerateColumns = false;
             this.dgInvoiceItems.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgInvoiceItems.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -269,14 +277,14 @@
             this.TotalColumn});
             this.dgInvoiceItems.DataSource = this.invoiceItemBindingSource;
             this.dgInvoiceItems.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnKeystroke;
-            this.dgInvoiceItems.Location = new System.Drawing.Point(21, 284);
+            this.dgInvoiceItems.Location = new System.Drawing.Point(21, 315);
             this.dgInvoiceItems.Name = "dgInvoiceItems";
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dgInvoiceItems.RowsDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle16.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgInvoiceItems.RowsDefaultCellStyle = dataGridViewCellStyle16;
             this.dgInvoiceItems.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dgInvoiceItems.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.dgInvoiceItems.Size = new System.Drawing.Size(942, 195);
-            this.dgInvoiceItems.TabIndex = 12;
+            this.dgInvoiceItems.TabIndex = 13;
             this.dgInvoiceItems.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgInvoiceItems_CellEndEdit);
             this.dgInvoiceItems.CellLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgInvoiceItems_CellLeave);
             this.dgInvoiceItems.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dgInvoiceItems_CellPainting);
@@ -288,10 +296,105 @@
             this.dgInvoiceItems.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dgInvoiceItems_RowsAdded);
             this.dgInvoiceItems.MouseHover += new System.EventHandler(this.dgInvoiceItems_MouseHover);
             // 
+            // ItemIDColumn
+            // 
+            this.ItemIDColumn.DataPropertyName = "ItemID";
+            this.ItemIDColumn.HeaderText = "ItemID";
+            this.ItemIDColumn.Name = "ItemIDColumn";
+            this.ItemIDColumn.Visible = false;
+            this.ItemIDColumn.Width = 120;
+            // 
+            // InvoiceIDColumn
+            // 
+            this.InvoiceIDColumn.DataPropertyName = "InvoiceID";
+            this.InvoiceIDColumn.HeaderText = "InvoiceID";
+            this.InvoiceIDColumn.Name = "InvoiceIDColumn";
+            this.InvoiceIDColumn.Visible = false;
+            // 
+            // DescriptionColumn
+            // 
+            this.DescriptionColumn.DataPropertyName = "Description";
+            this.DescriptionColumn.HeaderText = "Description";
+            this.DescriptionColumn.Name = "DescriptionColumn";
+            this.DescriptionColumn.Width = 150;
+            // 
+            // UnitIDColumn
+            // 
+            this.UnitIDColumn.DataPropertyName = "UnitID";
+            this.UnitIDColumn.DataSource = this.unitBindingSource;
+            this.UnitIDColumn.DisplayMember = "FullName";
+            this.UnitIDColumn.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.ComboBox;
+            this.UnitIDColumn.HeaderText = "Unit";
+            this.UnitIDColumn.Name = "UnitIDColumn";
+            this.UnitIDColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.UnitIDColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.UnitIDColumn.ValueMember = "UnitID";
+            this.UnitIDColumn.Width = 120;
+            // 
             // unitBindingSource
             // 
             this.unitBindingSource.DataMember = "Unit";
             this.unitBindingSource.DataSource = this.invoiceTrackerDataSet;
+            // 
+            // UnitPriceColumn
+            // 
+            this.UnitPriceColumn.DataPropertyName = "UnitPrice";
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle10.Format = "N2";
+            dataGridViewCellStyle10.NullValue = "0.00";
+            this.UnitPriceColumn.DefaultCellStyle = dataGridViewCellStyle10;
+            this.UnitPriceColumn.HeaderText = "Unit Price";
+            this.UnitPriceColumn.Name = "UnitPriceColumn";
+            // 
+            // QuantityColumn
+            // 
+            this.QuantityColumn.DataPropertyName = "Quantity";
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle11.Format = "N2";
+            dataGridViewCellStyle11.NullValue = "0";
+            this.QuantityColumn.DefaultCellStyle = dataGridViewCellStyle11;
+            this.QuantityColumn.HeaderText = "Quantity";
+            this.QuantityColumn.Name = "QuantityColumn";
+            // 
+            // ValueColumn
+            // 
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle12.Format = "N2";
+            dataGridViewCellStyle12.NullValue = "0.00";
+            this.ValueColumn.DefaultCellStyle = dataGridViewCellStyle12;
+            this.ValueColumn.HeaderText = "Value";
+            this.ValueColumn.Name = "ValueColumn";
+            this.ValueColumn.ReadOnly = true;
+            // 
+            // VATColumn
+            // 
+            this.VATColumn.DataPropertyName = "VAT";
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle13.Format = "N2";
+            dataGridViewCellStyle13.NullValue = "0.00";
+            this.VATColumn.DefaultCellStyle = dataGridViewCellStyle13;
+            this.VATColumn.HeaderText = "VAT";
+            this.VATColumn.Name = "VATColumn";
+            // 
+            // VatSumColumn
+            // 
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle14.Format = "N2";
+            dataGridViewCellStyle14.NullValue = "0.00";
+            this.VatSumColumn.DefaultCellStyle = dataGridViewCellStyle14;
+            this.VatSumColumn.HeaderText = "VatSum";
+            this.VatSumColumn.Name = "VatSumColumn";
+            this.VatSumColumn.ReadOnly = true;
+            // 
+            // TotalColumn
+            // 
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle15.Format = "N2";
+            dataGridViewCellStyle15.NullValue = "0.00";
+            this.TotalColumn.DefaultCellStyle = dataGridViewCellStyle15;
+            this.TotalColumn.HeaderText = "Total";
+            this.TotalColumn.Name = "TotalColumn";
+            this.TotalColumn.ReadOnly = true;
             // 
             // invoiceItemBindingSource
             // 
@@ -310,24 +413,25 @@
             // 
             this.lblClientPIB.AutoSize = true;
             this.lblClientPIB.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblClientPIB.Location = new System.Drawing.Point(12, 55);
+            this.lblClientPIB.Location = new System.Drawing.Point(12, 85);
             this.lblClientPIB.Name = "lblClientPIB";
             this.lblClientPIB.Size = new System.Drawing.Size(76, 16);
-            this.lblClientPIB.TabIndex = 8;
+            this.lblClientPIB.TabIndex = 3;
             this.lblClientPIB.Text = "lblClientPIB";
             // 
             // lblClientAddress
             // 
             this.lblClientAddress.AutoSize = true;
             this.lblClientAddress.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblClientAddress.Location = new System.Drawing.Point(12, 88);
+            this.lblClientAddress.Location = new System.Drawing.Point(12, 118);
             this.lblClientAddress.Name = "lblClientAddress";
             this.lblClientAddress.Size = new System.Drawing.Size(106, 16);
-            this.lblClientAddress.TabIndex = 9;
+            this.lblClientAddress.TabIndex = 5;
             this.lblClientAddress.Text = "lblClientAddress";
             // 
             // gbClient
             // 
+            this.gbClient.Controls.Add(this.btnChooseClient);
             this.gbClient.Controls.Add(this.tbClientAddress);
             this.gbClient.Controls.Add(this.tbClientPIB);
             this.gbClient.Controls.Add(this.lblClientAddress);
@@ -337,35 +441,46 @@
             this.gbClient.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbClient.Location = new System.Drawing.Point(21, 97);
             this.gbClient.Name = "gbClient";
-            this.gbClient.Size = new System.Drawing.Size(438, 171);
-            this.gbClient.TabIndex = 6;
+            this.gbClient.Size = new System.Drawing.Size(438, 200);
+            this.gbClient.TabIndex = 8;
             this.gbClient.TabStop = false;
             this.gbClient.Text = "gbClient";
+            // 
+            // btnChooseClient
+            // 
+            this.btnChooseClient.AutoSize = true;
+            this.btnChooseClient.Location = new System.Drawing.Point(304, 20);
+            this.btnChooseClient.Name = "btnChooseClient";
+            this.btnChooseClient.Size = new System.Drawing.Size(116, 26);
+            this.btnChooseClient.TabIndex = 0;
+            this.btnChooseClient.Text = "btnChooseClient";
+            this.btnChooseClient.UseVisualStyleBackColor = true;
+            this.btnChooseClient.Click += new System.EventHandler(this.btnChooseClient_Click);
             // 
             // tbClientAddress
             // 
             this.tbClientAddress.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbClientAddress.Location = new System.Drawing.Point(143, 88);
+            this.tbClientAddress.Location = new System.Drawing.Point(143, 118);
             this.tbClientAddress.Multiline = true;
             this.tbClientAddress.Name = "tbClientAddress";
             this.tbClientAddress.Size = new System.Drawing.Size(277, 62);
-            this.tbClientAddress.TabIndex = 2;
+            this.tbClientAddress.TabIndex = 6;
             // 
             // tbClientPIB
             // 
             this.tbClientPIB.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbClientPIB.Location = new System.Drawing.Point(143, 55);
+            this.tbClientPIB.Location = new System.Drawing.Point(143, 85);
             this.tbClientPIB.Name = "tbClientPIB";
             this.tbClientPIB.Size = new System.Drawing.Size(277, 22);
-            this.tbClientPIB.TabIndex = 1;
+            this.tbClientPIB.TabIndex = 4;
             // 
             // tbClientName
             // 
             this.tbClientName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbClientName.Location = new System.Drawing.Point(143, 23);
+            this.tbClientName.Location = new System.Drawing.Point(143, 53);
             this.tbClientName.Name = "tbClientName";
             this.tbClientName.Size = new System.Drawing.Size(277, 22);
-            this.tbClientName.TabIndex = 0;
+            this.tbClientName.TabIndex = 2;
             // 
             // bindingNavigator1
             // 
@@ -387,7 +502,7 @@
             this.bindingNavigatorSeparator2,
             this.bindingNavigatorAddNewItem,
             this.bindingNavigatorDeleteItem});
-            this.bindingNavigator1.Location = new System.Drawing.Point(21, 482);
+            this.bindingNavigator1.Location = new System.Drawing.Point(21, 513);
             this.bindingNavigator1.MoveFirstItem = this.bindingNavigatorMoveFirstItem;
             this.bindingNavigator1.MoveLastItem = this.bindingNavigatorMoveLastItem;
             this.bindingNavigator1.MoveNextItem = this.bindingNavigatorMoveNextItem;
@@ -396,7 +511,7 @@
             this.bindingNavigator1.PositionItem = this.bindingNavigatorPositionItem;
             this.bindingNavigator1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
             this.bindingNavigator1.Size = new System.Drawing.Size(266, 25);
-            this.bindingNavigator1.TabIndex = 13;
+            this.bindingNavigator1.TabIndex = 14;
             this.bindingNavigator1.Text = "bindingNavigator1";
             // 
             // bindingNavigatorAddNewItem
@@ -487,10 +602,10 @@
             // btnPrint
             // 
             this.btnPrint.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnPrint.Location = new System.Drawing.Point(373, 515);
+            this.btnPrint.Location = new System.Drawing.Point(373, 546);
             this.btnPrint.Name = "btnPrint";
             this.btnPrint.Size = new System.Drawing.Size(75, 23);
-            this.btnPrint.TabIndex = 14;
+            this.btnPrint.TabIndex = 15;
             this.btnPrint.Text = "btnPrint";
             this.btnPrint.UseVisualStyleBackColor = true;
             this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
@@ -499,10 +614,10 @@
             // 
             this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.statusLabel});
-            this.statusStrip.Location = new System.Drawing.Point(0, 551);
+            this.statusStrip.Location = new System.Drawing.Point(0, 582);
             this.statusStrip.Name = "statusStrip";
             this.statusStrip.Size = new System.Drawing.Size(984, 22);
-            this.statusStrip.TabIndex = 17;
+            this.statusStrip.TabIndex = 18;
             this.statusStrip.Text = "statusStrip1";
             // 
             // statusLabel
@@ -511,100 +626,55 @@
             this.statusLabel.Name = "statusLabel";
             this.statusLabel.Size = new System.Drawing.Size(0, 17);
             // 
-            // ItemIDColumn
+            // cbInvoiceTypes
             // 
-            this.ItemIDColumn.DataPropertyName = "ItemID";
-            this.ItemIDColumn.HeaderText = "ItemID";
-            this.ItemIDColumn.Name = "ItemIDColumn";
-            this.ItemIDColumn.Visible = false;
-            this.ItemIDColumn.Width = 120;
+            this.cbInvoiceTypes.DataSource = this.invoiceTypeBindingSource;
+            this.cbInvoiceTypes.DisplayMember = "InvoiceTypeName";
+            this.cbInvoiceTypes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbInvoiceTypes.FormattingEnabled = true;
+            this.cbInvoiceTypes.Location = new System.Drawing.Point(657, 27);
+            this.cbInvoiceTypes.Name = "cbInvoiceTypes";
+            this.cbInvoiceTypes.Size = new System.Drawing.Size(277, 24);
+            this.cbInvoiceTypes.TabIndex = 3;
+            this.cbInvoiceTypes.ValueMember = "InvoiceTypeID";
+            this.cbInvoiceTypes.SelectedIndexChanged += new System.EventHandler(this.cbInvoiceTypes_SelectedIndexChanged);
             // 
-            // InvoiceIDColumn
+            // invoiceTypeBindingSource
             // 
-            this.InvoiceIDColumn.DataPropertyName = "InvoiceID";
-            this.InvoiceIDColumn.HeaderText = "InvoiceID";
-            this.InvoiceIDColumn.Name = "InvoiceIDColumn";
-            this.InvoiceIDColumn.Visible = false;
+            this.invoiceTypeBindingSource.DataMember = "InvoiceType";
+            this.invoiceTypeBindingSource.DataSource = this.invoiceTrackerDataSet;
             // 
-            // DescriptionColumn
+            // lblInvoiceType
             // 
-            this.DescriptionColumn.DataPropertyName = "Description";
-            this.DescriptionColumn.HeaderText = "Description";
-            this.DescriptionColumn.Name = "DescriptionColumn";
-            this.DescriptionColumn.Width = 150;
+            this.lblInvoiceType.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblInvoiceType.Location = new System.Drawing.Point(517, 27);
+            this.lblInvoiceType.Name = "lblInvoiceType";
+            this.lblInvoiceType.Size = new System.Drawing.Size(134, 29);
+            this.lblInvoiceType.TabIndex = 2;
+            this.lblInvoiceType.Text = "lblInvoiceType";
             // 
-            // UnitIDColumn
+            // invoiceTypeTableAdapter
             // 
-            this.UnitIDColumn.DataPropertyName = "UnitID";
-            this.UnitIDColumn.DataSource = this.unitBindingSource;
-            this.UnitIDColumn.DisplayMember = "FullName";
-            this.UnitIDColumn.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.ComboBox;
-            this.UnitIDColumn.HeaderText = "Unit";
-            this.UnitIDColumn.Name = "UnitIDColumn";
-            this.UnitIDColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.UnitIDColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.UnitIDColumn.ValueMember = "UnitID";
-            this.UnitIDColumn.Width = 120;
+            this.invoiceTypeTableAdapter.ClearBeforeFill = true;
             // 
-            // UnitPriceColumn
+            // lblTurnoverDate
             // 
-            this.UnitPriceColumn.DataPropertyName = "UnitPrice";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle2.Format = "N2";
-            dataGridViewCellStyle2.NullValue = "0.00";
-            this.UnitPriceColumn.DefaultCellStyle = dataGridViewCellStyle2;
-            this.UnitPriceColumn.HeaderText = "Unit Price";
-            this.UnitPriceColumn.Name = "UnitPriceColumn";
+            this.lblTurnoverDate.AutoSize = true;
+            this.lblTurnoverDate.Location = new System.Drawing.Point(517, 215);
+            this.lblTurnoverDate.Name = "lblTurnoverDate";
+            this.lblTurnoverDate.Size = new System.Drawing.Size(105, 16);
+            this.lblTurnoverDate.TabIndex = 11;
+            this.lblTurnoverDate.Text = "lblTurnoverDate";
             // 
-            // QuantityColumn
+            // dateTurnover
             // 
-            this.QuantityColumn.DataPropertyName = "Quantity";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle3.Format = "N2";
-            dataGridViewCellStyle3.NullValue = "0";
-            this.QuantityColumn.DefaultCellStyle = dataGridViewCellStyle3;
-            this.QuantityColumn.HeaderText = "Quantity";
-            this.QuantityColumn.Name = "QuantityColumn";
-            // 
-            // ValueColumn
-            // 
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle4.Format = "N2";
-            dataGridViewCellStyle4.NullValue = "0.00";
-            this.ValueColumn.DefaultCellStyle = dataGridViewCellStyle4;
-            this.ValueColumn.HeaderText = "Value";
-            this.ValueColumn.Name = "ValueColumn";
-            this.ValueColumn.ReadOnly = true;
-            // 
-            // VATColumn
-            // 
-            this.VATColumn.DataPropertyName = "VAT";
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle5.Format = "N2";
-            dataGridViewCellStyle5.NullValue = "0.00";
-            this.VATColumn.DefaultCellStyle = dataGridViewCellStyle5;
-            this.VATColumn.HeaderText = "VAT";
-            this.VATColumn.Name = "VATColumn";
-            // 
-            // VatSumColumn
-            // 
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle6.Format = "N2";
-            dataGridViewCellStyle6.NullValue = "0.00";
-            this.VatSumColumn.DefaultCellStyle = dataGridViewCellStyle6;
-            this.VatSumColumn.HeaderText = "VatSum";
-            this.VatSumColumn.Name = "VatSumColumn";
-            this.VatSumColumn.ReadOnly = true;
-            // 
-            // TotalColumn
-            // 
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle7.Format = "N2";
-            dataGridViewCellStyle7.NullValue = "0.00";
-            this.TotalColumn.DefaultCellStyle = dataGridViewCellStyle7;
-            this.TotalColumn.HeaderText = "Total";
-            this.TotalColumn.Name = "TotalColumn";
-            this.TotalColumn.ReadOnly = true;
+            this.dateTurnover.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateTurnover.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTurnover.ImeMode = System.Windows.Forms.ImeMode.On;
+            this.dateTurnover.Location = new System.Drawing.Point(657, 215);
+            this.dateTurnover.Name = "dateTurnover";
+            this.dateTurnover.Size = new System.Drawing.Size(277, 22);
+            this.dateTurnover.TabIndex = 12;
             // 
             // AddInvoiceForm
             // 
@@ -612,7 +682,11 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(984, 573);
+            this.ClientSize = new System.Drawing.Size(984, 604);
+            this.Controls.Add(this.dateTurnover);
+            this.Controls.Add(this.lblTurnoverDate);
+            this.Controls.Add(this.lblInvoiceType);
+            this.Controls.Add(this.cbInvoiceTypes);
             this.Controls.Add(this.statusStrip);
             this.Controls.Add(this.btnPrint);
             this.Controls.Add(this.bindingNavigator1);
@@ -650,6 +724,7 @@
             this.bindingNavigator1.PerformLayout();
             this.statusStrip.ResumeLayout(false);
             this.statusStrip.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.invoiceTypeBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -712,5 +787,12 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn VATColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn VatSumColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn TotalColumn;
+        private System.Windows.Forms.ComboBox cbInvoiceTypes;
+        private System.Windows.Forms.Label lblInvoiceType;
+        private System.Windows.Forms.BindingSource invoiceTypeBindingSource;
+        private InvoiceTrackerDataSetTableAdapters.InvoiceTypeTableAdapter invoiceTypeTableAdapter;
+        private System.Windows.Forms.Button btnChooseClient;
+        private System.Windows.Forms.Label lblTurnoverDate;
+        private System.Windows.Forms.DateTimePicker dateTurnover;
     }
 }

@@ -48,11 +48,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AboutBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AboutBox.Designer.cs">
+      <DependentUpon>AboutBox.cs</DependentUpon>
+    </Compile>
     <Compile Include="AddInvoiceForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="AddInvoiceForm.Designer.cs">
       <DependentUpon>AddInvoiceForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FindClientForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FindClientForm.Designer.cs">
+      <DependentUpon>FindClientForm.cs</DependentUpon>
     </Compile>
     <Compile Include="FindInvoiceDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -70,6 +82,10 @@
     </Compile>
     <Compile Include="InvoicePrintForm.Designer.cs">
       <DependentUpon>InvoicePrintForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InvoiceTrackerDataSet.cs">
+      <DependentUpon>InvoiceTrackerDataSet.xsd</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="InvoiceTrackerDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -103,8 +119,14 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ReportDataSet.xsd</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="AboutBox.resx">
+      <DependentUpon>AboutBox.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AddInvoiceForm.resx">
       <DependentUpon>AddInvoiceForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FindClientForm.resx">
+      <DependentUpon>FindClientForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FindInvoiceForm.resx">
       <DependentUpon>FindInvoiceForm.cs</DependentUpon>

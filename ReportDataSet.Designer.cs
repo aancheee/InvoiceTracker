@@ -335,6 +335,8 @@ namespace InvoiceTracker {
             
             private global::System.Data.DataColumn columnInvoiceID;
             
+            private global::System.Data.DataColumn columnTurnoverDate;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public InvoiceDataTable() {
@@ -426,6 +428,14 @@ namespace InvoiceTracker {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn TurnoverDateColumn {
+                get {
+                    return this.columnTurnoverDate;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -461,7 +471,7 @@ namespace InvoiceTracker {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public InvoiceRow AddInvoiceRow(System.DateTime InvoiceDate, string Note, string LocationName, string ClientName, string Address, string ClientPIB, int InvoiceID) {
+            public InvoiceRow AddInvoiceRow(System.DateTime InvoiceDate, string Note, string LocationName, string ClientName, string Address, string ClientPIB, int InvoiceID, System.DateTime TurnoverDate) {
                 InvoiceRow rowInvoiceRow = ((InvoiceRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         InvoiceDate,
@@ -470,7 +480,8 @@ namespace InvoiceTracker {
                         ClientName,
                         Address,
                         ClientPIB,
-                        InvoiceID};
+                        InvoiceID,
+                        TurnoverDate};
                 rowInvoiceRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowInvoiceRow);
                 return rowInvoiceRow;
@@ -500,6 +511,7 @@ namespace InvoiceTracker {
                 this.columnAddress = base.Columns["Address"];
                 this.columnClientPIB = base.Columns["ClientPIB"];
                 this.columnInvoiceID = base.Columns["InvoiceID"];
+                this.columnTurnoverDate = base.Columns["TurnoverDate"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -519,6 +531,8 @@ namespace InvoiceTracker {
                 base.Columns.Add(this.columnClientPIB);
                 this.columnInvoiceID = new global::System.Data.DataColumn("InvoiceID", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnInvoiceID);
+                this.columnTurnoverDate = new global::System.Data.DataColumn("TurnoverDate", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTurnoverDate);
                 this.columnNote.MaxLength = 255;
                 this.columnLocationName.MaxLength = 255;
                 this.columnClientName.MaxLength = 255;
@@ -1160,6 +1174,22 @@ namespace InvoiceTracker {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public System.DateTime TurnoverDate {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.tableInvoice.TurnoverDateColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'TurnoverDate\' in table \'Invoice\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableInvoice.TurnoverDateColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsInvoiceDateNull() {
                 return this.IsNull(this.tableInvoice.InvoiceDateColumn);
             }
@@ -1240,6 +1270,18 @@ namespace InvoiceTracker {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetInvoiceIDNull() {
                 this[this.tableInvoice.InvoiceIDColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsTurnoverDateNull() {
+                return this.IsNull(this.tableInvoice.TurnoverDateColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetTurnoverDateNull() {
+                this[this.tableInvoice.TurnoverDateColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1760,6 +1802,7 @@ namespace InvoiceTracker.ReportDataSetTableAdapters {
             tableMapping.ColumnMappings.Add("Address", "Address");
             tableMapping.ColumnMappings.Add("ClientPIB", "ClientPIB");
             tableMapping.ColumnMappings.Add("InvoiceID", "InvoiceID");
+            tableMapping.ColumnMappings.Add("TurnoverDate", "TurnoverDate");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -1776,14 +1819,14 @@ namespace InvoiceTracker.ReportDataSetTableAdapters {
             this._commandCollection = new global::System.Data.OleDb.OleDbCommand[2];
             this._commandCollection[0] = new global::System.Data.OleDb.OleDbCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = @"SELECT        Invoice.InvoiceDate, Invoice.[Note], Location.LocationName, Client.ClientName, Client.Address, Client.ClientPIB, Invoice.InvoiceID
+            this._commandCollection[0].CommandText = @"SELECT        Invoice.InvoiceDate, Invoice.[Note], Location.LocationName, Client.ClientName, Client.Address, Client.ClientPIB, Invoice.InvoiceID, Invoice.TurnoverDate
 FROM            ((Invoice INNER JOIN
                          Client ON Invoice.ClientID = Client.ClientID) INNER JOIN
                          Location ON Invoice.LocationID = Location.LocationID)";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1] = new global::System.Data.OleDb.OleDbCommand();
             this._commandCollection[1].Connection = this.Connection;
-            this._commandCollection[1].CommandText = @"SELECT        Invoice.InvoiceDate, Invoice.[Note], Location.LocationName, Client.ClientName, Client.Address, Client.ClientPIB, Invoice.InvoiceID
+            this._commandCollection[1].CommandText = @"SELECT        Invoice.InvoiceDate, Invoice.[Note], Location.LocationName, Client.ClientName, Client.Address, Client.ClientPIB, Invoice.InvoiceID, Invoice.TurnoverDate
 FROM            ((Invoice INNER JOIN
                          Client ON Invoice.ClientID = Client.ClientID) INNER JOIN
                          Location ON Invoice.LocationID = Location.LocationID)

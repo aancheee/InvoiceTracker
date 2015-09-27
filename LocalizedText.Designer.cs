@@ -61,6 +61,15 @@ namespace InvoiceTracker {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to About.
+        /// </summary>
+        internal static string About {
+            get {
+                return ResourceManager.GetString("About", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Address.
         /// </summary>
         internal static string Address {
@@ -84,6 +93,15 @@ namespace InvoiceTracker {
         internal static string ChangesSaved {
             get {
                 return ResourceManager.GetString("ChangesSaved", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Choose Client.
+        /// </summary>
+        internal static string ChooseClient {
+            get {
+                return ResourceManager.GetString("ChooseClient", resourceCulture);
             }
         }
         
@@ -196,6 +214,15 @@ namespace InvoiceTracker {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Help.
+        /// </summary>
+        internal static string Help {
+            get {
+                return ResourceManager.GetString("Help", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Invoice.
         /// </summary>
         internal static string Invoice {
@@ -259,7 +286,7 @@ namespace InvoiceTracker {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to PIB.
+        ///   Looks up a localized string similar to PIB/PBG.
         /// </summary>
         internal static string PIB {
             get {
@@ -295,6 +322,15 @@ namespace InvoiceTracker {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Izaberi.
+        /// </summary>
+        internal static string Select {
+            get {
+                return ResourceManager.GetString("Select", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Success.
         /// </summary>
         internal static string Success {
@@ -309,6 +345,24 @@ namespace InvoiceTracker {
         internal static string Total {
             get {
                 return ResourceManager.GetString("Total", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Turnover Date.
+        /// </summary>
+        internal static string TurnoverDate {
+            get {
+                return ResourceManager.GetString("TurnoverDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Type.
+        /// </summary>
+        internal static string Type {
+            get {
+                return ResourceManager.GetString("Type", resourceCulture);
             }
         }
         

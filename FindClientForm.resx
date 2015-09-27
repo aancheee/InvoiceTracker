@@ -117,118 +117,16 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Address" xml:space="preserve">
-    <value>Adresa</value>
-  </data>
-  <data name="Cancel" xml:space="preserve">
-    <value>Izlaz</value>
-  </data>
-  <data name="ChangesSaved" xml:space="preserve">
-    <value>Izmene su sačuvane.</value>
-  </data>
-  <data name="ClientName" xml:space="preserve">
-    <value>Kupac</value>
-  </data>
-  <data name="CompanyName" xml:space="preserve">
-    <value>Salat centar plastenici</value>
-  </data>
-  <data name="Description" xml:space="preserve">
-    <value>Opis</value>
-  </data>
-  <data name="Error" xml:space="preserve">
-    <value>Greška!</value>
-  </data>
-  <data name="Exit" xml:space="preserve">
-    <value>Izlaz</value>
-  </data>
-  <data name="FillRequiredFields" xml:space="preserve">
-    <value>Molimo da popunite sva obavezna polja.</value>
-  </data>
-  <data name="Find" xml:space="preserve">
-    <value>Pretraga</value>
-  </data>
-  <data name="Invoice" xml:space="preserve">
-    <value>Otpremnica</value>
-  </data>
-  <data name="InvoiceDate" xml:space="preserve">
-    <value>Datum izdavanja</value>
-  </data>
-  <data name="InvoiceLocation" xml:space="preserve">
-    <value>Mesto izdavanja</value>
-  </data>
-  <data name="InvoiceNumber" xml:space="preserve">
-    <value>Otpremnica br.</value>
-  </data>
-  <data name="Invoices" xml:space="preserve">
-    <value>Otpremnice</value>
-  </data>
-  <data name="NewInvoice" xml:space="preserve">
-    <value>Nova otpremnica</value>
-  </data>
-  <data name="Note" xml:space="preserve">
-    <value>Napomena</value>
-  </data>
-  <data name="PIB" xml:space="preserve">
-    <value>PIB/PBG</value>
-  </data>
-  <data name="Quantity" xml:space="preserve">
-    <value>Količina</value>
-  </data>
-  <data name="Save" xml:space="preserve">
-    <value>Sačuvaj</value>
-  </data>
-  <data name="Success" xml:space="preserve">
-    <value>Uspešna akcija</value>
-  </data>
-  <data name="Total" xml:space="preserve">
-    <value>Ukupno</value>
-  </data>
-  <data name="Unit" xml:space="preserve">
-    <value>JM</value>
-  </data>
-  <data name="UnitPrice" xml:space="preserve">
-    <value>Cena po JM</value>
-  </data>
-  <data name="Value" xml:space="preserve">
-    <value>Osnovica</value>
-  </data>
-  <data name="VAT" xml:space="preserve">
-    <value>PDV %</value>
-  </data>
-  <data name="ClientInfo" xml:space="preserve">
-    <value>Podaci o kupcu</value>
-  </data>
-  <data name="ClientNameFind" xml:space="preserve">
-    <value>Naziv kupca</value>
-  </data>
-  <data name="Edit" xml:space="preserve">
-    <value>Izmena</value>
-  </data>
-  <data name="FindInvoice" xml:space="preserve">
-    <value>Pretraga</value>
-  </data>
-  <data name="VATSum" xml:space="preserve">
-    <value>PDV suma</value>
-  </data>
-  <data name="Print" xml:space="preserve">
-    <value>Štampa</value>
-  </data>
-  <data name="FieldTypeNumber" xml:space="preserve">
-    <value>Polje može da sadrži isključivo brojeve!</value>
-  </data>
-  <data name="About" xml:space="preserve">
-    <value>O programu</value>
-  </data>
-  <data name="Help" xml:space="preserve">
-    <value>Pomoć</value>
-  </data>
-  <data name="ChooseClient" xml:space="preserve">
-    <value>Izaberi klijenta</value>
-  </data>
-  <data name="TurnoverDate" xml:space="preserve">
-    <value>Datum prometa</value>
-  </data>
-  <data name="Type" xml:space="preserve">
-    <value>Tip</value>
-  </data>
+  <metadata name="clientBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>189, 17</value>
+  </metadata>
+  <metadata name="invoiceTrackerDataSet.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="invoiceTrackerDataSet.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="clientTableAdapter.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>349, 17</value>
+  </metadata>
 </root>

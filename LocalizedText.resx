@@ -181,7 +181,7 @@
     <value>Note</value>
   </data>
   <data name="PIB" xml:space="preserve">
-    <value>PIB</value>
+    <value>PIB/PBG</value>
   </data>
   <data name="Quantity" xml:space="preserve">
     <value>Quantity</value>
@@ -215,5 +215,23 @@
   </data>
   <data name="FieldTypeNumber" xml:space="preserve">
     <value>This field can contain numbers only!</value>
+  </data>
+  <data name="About" xml:space="preserve">
+    <value>About</value>
+  </data>
+  <data name="Help" xml:space="preserve">
+    <value>Help</value>
+  </data>
+  <data name="ChooseClient" xml:space="preserve">
+    <value>Choose Client</value>
+  </data>
+  <data name="Select" xml:space="preserve">
+    <value>Izaberi</value>
+  </data>
+  <data name="TurnoverDate" xml:space="preserve">
+    <value>Turnover Date</value>
+  </data>
+  <data name="Type" xml:space="preserve">
+    <value>Type</value>
   </data>
 </root>

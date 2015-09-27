@@ -15,6 +15,7 @@ namespace InvoiceTracker
     {
         private int _InvoiceID = -1;
         private bool _IsNew = false;
+        private int _ClientID = -1;
 
         public int InvoiceID
         {
@@ -40,6 +41,8 @@ namespace InvoiceTracker
 
         private void AddInvoice_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'invoiceTrackerDataSet.InvoiceType' table. You can move, or remove it, as needed.
+            this.invoiceTypeTableAdapter.Fill(this.invoiceTrackerDataSet.InvoiceType);
             this.unitTableAdapter.Fill(this.invoiceTrackerDataSet.Unit);
             try { this.invoiceItemTableAdapter.Fill(this.invoiceTrackerDataSet.InvoiceItem); }
             catch (Exception ex) { string a = ""; }
@@ -54,14 +57,9 @@ namespace InvoiceTracker
                 string a = "";
             }
 
-            if (_InvoiceID < 1 && invoiceTrackerDataSet.Invoice.Count > 0)
-            {
-                _IsNew = true;
-                _InvoiceID = Convert.ToInt32(invoiceTrackerDataSet.Invoice.OrderByDescending(x => x.InvoiceID).First().InvoiceID) + 1;
-            }
-            else
-                _IsNew = false;                
-               
+            _IsNew = _InvoiceID < 1;
+
+            this.Text = LocalizedText.NewInvoice;
             this.lblInvoiceNumber.Text = LocalizedText.InvoiceNumber;
             this.lblClientName.Text = LocalizedText.ClientName;
             this.lblInvoiceDate.Text = LocalizedText.InvoiceDate;
@@ -81,10 +79,13 @@ namespace InvoiceTracker
             this.TotalColumn.HeaderText = LocalizedText.Total;
             this.gbClient.Text = LocalizedText.ClientInfo;
             this.btnPrint.Text = LocalizedText.Print;
+            this.lblInvoiceType.Text = LocalizedText.Type;
+            this.lblTurnoverDate.Text = LocalizedText.TurnoverDate;
+            this.btnChooseClient.Text = LocalizedText.ChooseClient;
 
             this.cbLocations.SelectedIndex = -1;
             
-            this.tbInvoiceNumber.Text = _InvoiceID.ToString();
+            //this.tbInvoiceNumber.Text = _InvoiceID.ToString();
 
             this.QuantityColumn.ValueType = typeof(double);
             this.UnitPriceColumn.ValueType = typeof(double);
@@ -105,12 +106,19 @@ namespace InvoiceTracker
                 cbLocations.SelectedValue = inv.LocationID;
                 tbNote.Text = inv.Note;
                 dateInvoice.Value = inv.InvoiceDate;
+                tbInvoiceNumber.Text = inv.InvoiceNumber;
+                cbInvoiceTypes.SelectedValue = inv.InvoiceTypeID;
+                dateTurnover.Value = inv.TurnoverDate;
+                SetTurnoverDate();
             }
 
             if (_IsNew)
                 btnPrint.Enabled = false;
             else
+            {
                 btnPrint.Enabled = true;
+                cbInvoiceTypes.Enabled = false;
+            }
 
             foreach (DataGridViewRow row in dgInvoiceItems.Rows)
             {
@@ -135,6 +143,7 @@ namespace InvoiceTracker
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            string invNoHlp = ""; 
             statusLabel.Text = "";
 
             if ((cbLocations.SelectedValue == null && cbLocations.Text == "") ||
@@ -145,27 +154,30 @@ namespace InvoiceTracker
                 return;
             }
 
-            int clientID = -1, locationID = -1;
+            int locationID = -1;
             
             //  Client
-            InvoiceTrackerDataSet.ClientRow newClient = invoiceTrackerDataSet.Client.NewClientRow();
-            newClient.ClientName = tbClientName.Text.Trim();
-            newClient.ClientPIB = tbClientPIB.Text.Trim();
-            newClient.Address = tbClientAddress.Text.Trim();
-            invoiceTrackerDataSet.Client.Rows.Add(newClient);
+            if (_ClientID == -1)
+            {
+                InvoiceTrackerDataSet.ClientRow newClient = invoiceTrackerDataSet.Client.NewClientRow();
+                newClient.ClientName = tbClientName.Text.Trim();
+                newClient.ClientPIB = tbClientPIB.Text.Trim();
+                newClient.Address = tbClientAddress.Text.Trim();
+                invoiceTrackerDataSet.Client.Rows.Add(newClient);
 
-            try
-            {
-                clientBindingSource.EndEdit();
-                clientTableAdapter.Update(invoiceTrackerDataSet.Client);
-                this.clientTableAdapter.Fill(this.invoiceTrackerDataSet.Client);
-                clientID = this.invoiceTrackerDataSet.Client.OrderByDescending(x => x.ClientID).First().ClientID;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, LocalizedText.Error);
-                statusLabel.Text = LocalizedText.Error;
-                return;
+                try
+                {
+                    clientBindingSource.EndEdit();
+                    clientTableAdapter.Update(invoiceTrackerDataSet.Client);
+                    this.clientTableAdapter.Fill(this.invoiceTrackerDataSet.Client);
+                    _ClientID = this.invoiceTrackerDataSet.Client.OrderByDescending(x => x.ClientID).First().ClientID;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, LocalizedText.Error);
+                    statusLabel.Text = LocalizedText.Error;
+                    return;
+                }
             }
 
             //  Location
@@ -174,7 +186,6 @@ namespace InvoiceTracker
                 InvoiceTrackerDataSet.LocationRow newLocation = invoiceTrackerDataSet.Location.NewLocationRow();
                 newLocation.LocationName = cbLocations.Text;
                 invoiceTrackerDataSet.Location.Rows.Add(newLocation);
-                //invoiceTrackerDataSet.AcceptChanges();
 
                 try
                 {
@@ -194,31 +205,72 @@ namespace InvoiceTracker
                 locationID = Convert.ToInt32(cbLocations.SelectedValue);
 
             //  Invoice
-            InvoiceTrackerDataSet.InvoiceRow invoice;       // = invoiceTrackerDataSet.Invoice.NewInvoiceRow();
+            InvoiceTrackerDataSet.InvoiceRow invoice;       
+            InvoiceTrackerDataSet.InvoiceRow hlpInvoice;
             if (_IsNew)
-            {
                 invoice = invoiceTrackerDataSet.Invoice.NewInvoiceRow();
-                //invoice.InvoiceID = _InvoiceID;
-            }
             else
                 invoice = invoiceTrackerDataSet.Invoice.Where(x => x.InvoiceID == _InvoiceID).FirstOrDefault();
 
-            invoice.ClientID = clientID;
-            invoice.InvoiceDate = DateTime.Now;
+            invoice.ClientID = _ClientID;
+            invoice.InvoiceDate = dateInvoice.Value;
             invoice.LocationID = locationID;
             invoice.Note = tbNote.Text;
+            invoice.InvoiceTypeID = Convert.ToInt32(cbInvoiceTypes.SelectedValue);
+            if (dateTurnover.Enabled)
+                invoice.TurnoverDate = dateTurnover.Value;
 
             if (_IsNew)
+            {
+                if (invoice.InvoiceTypeID == 1 || invoice.InvoiceTypeID == 2)       //  racun otpremnica, avansni racun
+                //  1, 2, 3... by year
+                {
+                    hlpInvoice = invoiceTrackerDataSet.Invoice.Where(x => x.InvoiceTypeID == invoice.InvoiceTypeID && x.InvoiceDate.Year == invoice.InvoiceDate.Year).OrderByDescending(x => x.InvoiceNumber).FirstOrDefault();
+                    if (hlpInvoice != null)
+                        invNoHlp = (Convert.ToInt32(hlpInvoice.InvoiceNumber) + 1).ToString();
+                    else
+                        invNoHlp = "1";
+                }
+                else if (invoice.InvoiceTypeID == 3 || invoice.InvoiceTypeID == 4)  //  ponuda, predracun
+                //  01, 02, 03... by month
+                {
+                    hlpInvoice = invoiceTrackerDataSet.Invoice.Where(x => x.InvoiceTypeID == invoice.InvoiceTypeID && x.InvoiceDate.Year == invoice.InvoiceDate.Year && x.InvoiceDate.Month == invoice.InvoiceDate.Month).OrderByDescending(x => x.InvoiceNumber).FirstOrDefault();
+                    if (hlpInvoice != null)
+                    {
+                        invNoHlp = (Convert.ToInt32(hlpInvoice.InvoiceNumber.Replace(invoice.InvoiceDate.ToString("yyyy") + invoice.InvoiceDate.ToString("MM") + "-", "")) + 1).ToString();
+                        if (invNoHlp.Length < 2)
+                            invNoHlp = "0" + invNoHlp;
+
+                        invNoHlp = invoice.InvoiceDate.ToString("yyyy") + invoice.InvoiceDate.ToString("MM") + "-" + invNoHlp;
+                    }
+                    else
+                        invNoHlp = invoice.InvoiceDate.ToString("yyyy") + invoice.InvoiceDate.ToString("MM") + "-" + "01";
+                }
+
+                invoice.InvoiceNumber = invNoHlp;
+
                 invoiceTrackerDataSet.Invoice.Rows.Add(invoice);
-            //invoiceTrackerDataSet.AcceptChanges();
+            }
+            else
+                invNoHlp = tbInvoiceNumber.Text;
 
             try
             {
                 invoiceBindingSource.EndEdit();
                 invoiceTableAdapter.Update(invoiceTrackerDataSet.Invoice);
                 this.invoiceTableAdapter.Fill(this.invoiceTrackerDataSet.Invoice);
-                
-                //invoiceID = this.invoiceTrackerDataSet.Invoice.OrderByDescending(x => x.InvoiceID).First().InvoiceID;                
+
+                if (_IsNew)
+                {
+                    _InvoiceID = this.invoiceTrackerDataSet.Invoice.OrderByDescending(x => x.InvoiceID).First().InvoiceID;
+
+                    foreach (InvoiceTrackerDataSet.InvoiceItemRow row in this.invoiceTrackerDataSet.InvoiceItem.Rows)
+                        if (row.InvoiceID == -1)
+                            row.InvoiceID = _InvoiceID;
+
+                    invoiceItemBindingSource.Filter = string.Format("InvoiceID = {0}", _InvoiceID);
+                    invoiceBindingSource.Filter = string.Format("InvoiceID = {0}", _InvoiceID);                    
+                }                        
             }
             catch (Exception ex)
             {
@@ -230,7 +282,8 @@ namespace InvoiceTracker
             try
             {
                 invoiceItemBindingSource.EndEdit();
-                invoiceItemTableAdapter.Update(invoiceTrackerDataSet.InvoiceItem);                
+                invoiceItemTableAdapter.Update(invoiceTrackerDataSet.InvoiceItem);
+                this.invoiceItemTableAdapter.Fill(this.invoiceTrackerDataSet.InvoiceItem);
             }
             catch (Exception ex)
             {
@@ -241,13 +294,14 @@ namespace InvoiceTracker
 
             MessageBox.Show(LocalizedText.ChangesSaved, LocalizedText.Success);
             statusLabel.Text = LocalizedText.ChangesSaved;
+            tbInvoiceNumber.Text = invNoHlp; 
+            cbInvoiceTypes.Enabled = false;
 
             if (_IsNew)
             {
                 _IsNew = false;
                 btnPrint.Enabled = true;
             }
-            //Close();            
         }
 
         private void dgInvoiceItems_CellValueChanged(object sender, DataGridViewCellEventArgs e)
@@ -334,10 +388,8 @@ namespace InvoiceTracker
 
         private void dgInvoiceItems_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
-            dgInvoiceItems.Rows[e.RowIndex].Cells[1].Value = _InvoiceID;
-            //dgInvoiceItems.Rows[e.RowIndex].Cells[4].Value =
-            //    dgInvoiceItems.Rows[e.RowIndex].Cells[5].Value = 0;
-            
+            if (dgInvoiceItems.Rows[e.RowIndex].Cells[1].Value == null)
+                dgInvoiceItems.Rows[e.RowIndex].Cells[1].Value = _InvoiceID;
         }
 
         private void btnPrint_Click(object sender, EventArgs e)
@@ -396,11 +448,40 @@ namespace InvoiceTracker
         {
             
         }
-
-
+        
         private void dgInvoiceItems_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
         {
             
-        }                                          
+        }
+
+        private void btnChooseClient_Click(object sender, EventArgs e)
+        {
+            FindClientForm form = new FindClientForm();
+            if (form.ShowDialog() == System.Windows.Forms.DialogResult.OK && form.Client != null)
+            {
+                _ClientID = form.Client.ClientID;
+                tbClientName.Text = form.Client.ClientName;
+                tbClientPIB.Text = form.Client.ClientPIB;
+                tbClientAddress.Text = form.Client.Address;
+            }
+        }
+
+        private void cbInvoiceTypes_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            SetTurnoverDate();
+        }
+
+        private void SetTurnoverDate()
+        {
+            if (cbInvoiceTypes.SelectedValue != null)
+            {
+                if (Convert.ToInt32(cbInvoiceTypes.SelectedValue) == 1 || Convert.ToInt32(cbInvoiceTypes.SelectedValue) == 2)
+                    dateTurnover.Enabled = true;
+                else
+                    dateTurnover.Enabled = false;
+            }
+            else
+                dateTurnover.Enabled = false;
+        }          
     }
 }

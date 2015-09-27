@@ -21,8 +21,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox1</rd:DefaultName>
-        <Top>1.875in</Top>
-        <Left>0.125in</Left>
+        <Top>2in</Top>
+        <Left>0.13542in</Left>
         <Height>0.25in</Height>
         <Width>1.67708in</Width>
         <Style>
@@ -53,8 +53,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>InvoiceID</rd:DefaultName>
-        <Top>1.875in</Top>
-        <Left>1.82986in</Left>
+        <Top>2in</Top>
+        <Left>1.84028in</Left>
         <Height>0.25in</Height>
         <Width>0.58333in</Width>
         <ZIndex>1</ZIndex>
@@ -88,8 +88,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox1</rd:DefaultName>
-        <Top>1.875in</Top>
-        <Left>2.92708in</Left>
+        <Top>2in</Top>
+        <Left>2.95014in</Left>
         <Height>0.25in</Height>
         <Width>1.66319in</Width>
         <ZIndex>2</ZIndex>
@@ -122,8 +122,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>InvoiceDate</rd:DefaultName>
-        <Top>1.875in</Top>
-        <Left>4.61805in</Left>
+        <Top>2in</Top>
+        <Left>4.66889in</Left>
         <Height>0.25in</Height>
         <Width>1in</Width>
         <ZIndex>3</ZIndex>
@@ -156,7 +156,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox1</rd:DefaultName>
-        <Top>1.875in</Top>
+        <Top>2in</Top>
         <Left>6.15104in</Left>
         <Height>0.25in</Height>
         <Width>1.67708in</Width>
@@ -189,7 +189,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>LocationName</rd:DefaultName>
-        <Top>1.875in</Top>
+        <Top>2in</Top>
         <Left>7.89458in</Left>
         <Height>0.25in</Height>
         <Width>1in</Width>
@@ -223,7 +223,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox4</rd:DefaultName>
-        <Top>2.23486in</Top>
+        <Top>2.73486in</Top>
         <Left>6.15104in</Left>
         <Height>0.25in</Height>
         <Width>1in</Width>
@@ -256,7 +256,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Note</rd:DefaultName>
-        <Top>2.23486in</Top>
+        <Top>2.73486in</Top>
         <Left>7.2934in</Left>
         <Height>0.78125in</Height>
         <Width>2.59076in</Width>
@@ -904,7 +904,7 @@
           </TablixMembers>
         </TablixRowHierarchy>
         <DataSetName>InvoiceItems</DataSetName>
-        <Top>3.26959in</Top>
+        <Top>3.76959in</Top>
         <Left>0.125in</Left>
         <Height>0.5in</Height>
         <Width>8.14458in</Width>
@@ -1037,7 +1037,7 @@ Mat. br.: 60456763
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox47</rd:DefaultName>
-        <Top>3.9675in</Top>
+        <Top>4.4675in</Top>
         <Left>0.4675in</Left>
         <Height>0.25in</Height>
         <Width>2.77198in</Width>
@@ -1072,7 +1072,7 @@ Mat. br.: 60456763
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox47</rd:DefaultName>
-        <Top>4.28in</Top>
+        <Top>4.78in</Top>
         <Left>0.4675in</Left>
         <Height>0.25in</Height>
         <Width>2.77198in</Width>
@@ -1107,7 +1107,7 @@ Mat. br.: 60456763
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox47</rd:DefaultName>
-        <Top>4.57166in</Top>
+        <Top>5.07166in</Top>
         <Left>0.46177in</Left>
         <Height>0.25in</Height>
         <Width>2.77198in</Width>
@@ -1144,7 +1144,7 @@ Mat. br.: 60456763
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox51</rd:DefaultName>
-        <Top>3.9675in</Top>
+        <Top>4.4675in</Top>
         <Left>3.23375in</Left>
         <Height>0.25in</Height>
         <Width>0.98152in</Width>
@@ -1181,7 +1181,7 @@ Mat. br.: 60456763
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox51</rd:DefaultName>
-        <Top>4.28in</Top>
+        <Top>4.78in</Top>
         <Left>3.23375in</Left>
         <Height>0.25in</Height>
         <Width>0.98152in</Width>
@@ -1218,7 +1218,7 @@ Mat. br.: 60456763
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox51</rd:DefaultName>
-        <Top>4.57166in</Top>
+        <Top>5.07166in</Top>
         <Left>3.23375in</Left>
         <Height>0.25in</Height>
         <Width>0.98152in</Width>
@@ -1234,7 +1234,7 @@ Mat. br.: 60456763
         </Style>
       </Textbox>
       <Line Name="Line1">
-        <Top>4.23833in</Top>
+        <Top>4.73833in</Top>
         <Left>0.4675in</Left>
         <Height>0in</Height>
         <Width>3.75697in</Width>
@@ -1246,7 +1246,7 @@ Mat. br.: 60456763
         </Style>
       </Line>
       <Line Name="Line2">
-        <Top>4.53in</Top>
+        <Top>5.03in</Top>
         <Left>0.46751in</Left>
         <Height>0in</Height>
         <Width>3.75697in</Width>
@@ -1258,7 +1258,7 @@ Mat. br.: 60456763
         </Style>
       </Line>
       <Line Name="Line3">
-        <Top>4.82166in</Top>
+        <Top>5.32166in</Top>
         <Left>0.46751in</Left>
         <Height>0in</Height>
         <Width>3.75697in</Width>
@@ -1290,7 +1290,7 @@ Mat. br.: 60456763
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox8</rd:DefaultName>
-        <Top>5.18625in</Top>
+        <Top>5.68625in</Top>
         <Left>1.19667in</Left>
         <Height>0.25in</Height>
         <Width>1in</Width>
@@ -1312,7 +1312,7 @@ Mat. br.: 60456763
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>Račun primio</Value>
+                <Value>Primio</Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
                   <FontSize>11pt</FontSize>
@@ -1323,7 +1323,7 @@ Mat. br.: 60456763
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox9</rd:DefaultName>
-        <Top>5.18625in</Top>
+        <Top>5.68625in</Top>
         <Left>6.85292in</Left>
         <Height>0.25in</Height>
         <Width>1in</Width>
@@ -1339,7 +1339,7 @@ Mat. br.: 60456763
         </Style>
       </Textbox>
       <Line Name="Line4">
-        <Top>5.88417in</Top>
+        <Top>6.38417in</Top>
         <Left>6.24875in</Left>
         <Height>0in</Height>
         <Width>2.40625in</Width>
@@ -1351,7 +1351,7 @@ Mat. br.: 60456763
         </Style>
       </Line>
       <Line Name="Line9">
-        <Top>5.88417in</Top>
+        <Top>6.38417in</Top>
         <Left>0.46751in</Left>
         <Height>0in</Height>
         <Width>2.40625in</Width>
@@ -1612,7 +1612,7 @@ Mat. br.: 60456763
           </TablixMembers>
         </TablixRowHierarchy>
         <DataSetName>Invoice</DataSetName>
-        <Top>2.26611in</Top>
+        <Top>2.76611in</Top>
         <Left>0.125in</Left>
         <Height>0.75in</Height>
         <Width>4.48833in</Width>
@@ -1643,6 +1643,74 @@ Mat. br.: 60456763
           </RightBorder>
         </Style>
       </Tablix>
+      <Textbox Name="Textbox4">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>DATUM PROMETA</Value>
+                <Style>
+                  <FontFamily>Calibri</FontFamily>
+                  <FontSize>11pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox1</rd:DefaultName>
+        <Top>2.38542in</Top>
+        <Left>2.95014in</Left>
+        <Height>0.25in</Height>
+        <Width>1.66319in</Width>
+        <ZIndex>24</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="TurnoverDate">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=First(Fields!TurnoverDate.Value, "Invoice")</Value>
+                <Style>
+                  <FontFamily>Calibri</FontFamily>
+                  <FontSize>11pt</FontSize>
+                  <Format>=FormatDateTime(First(Fields!TurnoverDate.Value, "Invoice"), DateFormat.ShortDate)</Format>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>TurnoverDate</rd:DefaultName>
+        <Top>2.38542in</Top>
+        <Left>4.655in</Left>
+        <Height>0.25in</Height>
+        <Width>1in</Width>
+        <ZIndex>25</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
     </ReportItems>
     <Height>8.5in</Height>
     <Style />
@@ -1702,6 +1770,10 @@ Mat. br.: 60456763
         <Field Name="InvoiceID">
           <DataField>InvoiceID</DataField>
           <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="TurnoverDate">
+          <DataField>TurnoverDate</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
         </Field>
       </Fields>
       <rd:DataSetInfo>

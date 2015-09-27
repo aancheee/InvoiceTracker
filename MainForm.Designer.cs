@@ -36,13 +36,16 @@
             this.MenuItemFindInvoice = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.MenuItemExit = new System.Windows.Forms.ToolStripMenuItem();
+            this.MenuItemHelp = new System.Windows.Forms.ToolStripMenuItem();
+            this.MenuItemAbout = new System.Windows.Forms.ToolStripMenuItem();
             this.MainMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // MainMenuStrip
             // 
             this.MainMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.MenuItemInvoice});
+            this.MenuItemInvoice,
+            this.MenuItemHelp});
             this.MainMenuStrip.Location = new System.Drawing.Point(0, 0);
             this.MainMenuStrip.Name = "MainMenuStrip";
             this.MainMenuStrip.Padding = new System.Windows.Forms.Padding(8, 2, 0, 2);
@@ -94,6 +97,22 @@
             this.MenuItemExit.Text = "MenuItemExit";
             this.MenuItemExit.Click += new System.EventHandler(this.MenuItemExit_Click);
             // 
+            // MenuItemHelp
+            // 
+            this.MenuItemHelp.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.MenuItemAbout});
+            this.MenuItemHelp.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MenuItemHelp.Name = "MenuItemHelp";
+            this.MenuItemHelp.Size = new System.Drawing.Size(134, 20);
+            this.MenuItemHelp.Text = "toolStripMenuItem2";
+            // 
+            // MenuItemAbout
+            // 
+            this.MenuItemAbout.Name = "MenuItemAbout";
+            this.MenuItemAbout.Size = new System.Drawing.Size(169, 22);
+            this.MenuItemAbout.Text = "MenuItemAbout";
+            this.MenuItemAbout.Click += new System.EventHandler(this.menuItemAboutToolStripMenuItem_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -123,6 +142,8 @@
         private System.Windows.Forms.ToolStripMenuItem MenuItemFindInvoice;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripMenuItem MenuItemExit;
+        private System.Windows.Forms.ToolStripMenuItem MenuItemHelp;
+        private System.Windows.Forms.ToolStripMenuItem MenuItemAbout;
     }
 }
 

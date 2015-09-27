@@ -24,6 +24,8 @@ namespace InvoiceTracker
             MenuItemNewInvoice.Text = LocalizedText.NewInvoice;
             MenuItemFindInvoice.Text = LocalizedText.Find;
             MenuItemExit.Text = LocalizedText.Exit;
+            MenuItemHelp.Text = LocalizedText.Help;
+            MenuItemAbout.Text = LocalizedText.About;
         }
 
         private void MenuItemExit_Click(object sender, EventArgs e)
@@ -41,6 +43,12 @@ namespace InvoiceTracker
         {
             FindInvoiceForm form = new FindInvoiceForm();
             form.ShowDialog();
+        }
+
+        private void menuItemAboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AboutBox box = new AboutBox();
+            box.ShowDialog();
         }
 
     }
