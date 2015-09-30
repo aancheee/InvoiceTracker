@@ -46,7 +46,7 @@ namespace InvoiceTracker
             }
         }
 
-        private void btnSelect_Click(object sender, EventArgs e)
+        private void SelectClient()
         {
             try
             {
@@ -61,6 +61,16 @@ namespace InvoiceTracker
             {
                 Close();
             }
+        }
+
+        private void btnSelect_Click(object sender, EventArgs e)
+        {
+            SelectClient();
+        }
+
+        private void dgClients_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            SelectClient();
         }    
     }
 }

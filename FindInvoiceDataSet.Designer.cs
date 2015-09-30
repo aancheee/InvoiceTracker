@@ -289,6 +289,10 @@ namespace InvoiceTracker {
             
             private global::System.Data.DataColumn columnInvoiceID;
             
+            private global::System.Data.DataColumn columnInvoiceNumber;
+            
+            private global::System.Data.DataColumn columnInvoiceTypeName;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public FindInvoiceQueryDataTable() {
@@ -364,6 +368,22 @@ namespace InvoiceTracker {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn InvoiceNumberColumn {
+                get {
+                    return this.columnInvoiceNumber;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn InvoiceTypeNameColumn {
+                get {
+                    return this.columnInvoiceTypeName;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -399,14 +419,16 @@ namespace InvoiceTracker {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public FindInvoiceQueryRow AddFindInvoiceQueryRow(System.DateTime InvoiceDate, string ClientName, string ClientPIB, string LocationName) {
+            public FindInvoiceQueryRow AddFindInvoiceQueryRow(System.DateTime InvoiceDate, string ClientName, string ClientPIB, string LocationName, string InvoiceNumber, string InvoiceTypeName) {
                 FindInvoiceQueryRow rowFindInvoiceQueryRow = ((FindInvoiceQueryRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         InvoiceDate,
                         ClientName,
                         ClientPIB,
                         LocationName,
-                        null};
+                        null,
+                        InvoiceNumber,
+                        InvoiceTypeName};
                 rowFindInvoiceQueryRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowFindInvoiceQueryRow);
                 return rowFindInvoiceQueryRow;
@@ -434,6 +456,8 @@ namespace InvoiceTracker {
                 this.columnClientPIB = base.Columns["ClientPIB"];
                 this.columnLocationName = base.Columns["LocationName"];
                 this.columnInvoiceID = base.Columns["InvoiceID"];
+                this.columnInvoiceNumber = base.Columns["InvoiceNumber"];
+                this.columnInvoiceTypeName = base.Columns["InvoiceTypeName"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -449,12 +473,18 @@ namespace InvoiceTracker {
                 base.Columns.Add(this.columnLocationName);
                 this.columnInvoiceID = new global::System.Data.DataColumn("InvoiceID", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnInvoiceID);
+                this.columnInvoiceNumber = new global::System.Data.DataColumn("InvoiceNumber", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnInvoiceNumber);
+                this.columnInvoiceTypeName = new global::System.Data.DataColumn("InvoiceTypeName", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnInvoiceTypeName);
                 this.columnClientName.MaxLength = 255;
                 this.columnClientPIB.MaxLength = 255;
                 this.columnLocationName.MaxLength = 255;
                 this.columnInvoiceID.AutoIncrement = true;
                 this.columnInvoiceID.AutoIncrementSeed = -1;
                 this.columnInvoiceID.AutoIncrementStep = -1;
+                this.columnInvoiceNumber.MaxLength = 255;
+                this.columnInvoiceTypeName.MaxLength = 255;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -677,6 +707,38 @@ namespace InvoiceTracker {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string InvoiceNumber {
+                get {
+                    try {
+                        return ((string)(this[this.tableFindInvoiceQuery.InvoiceNumberColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'InvoiceNumber\' in table \'FindInvoiceQuery\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableFindInvoiceQuery.InvoiceNumberColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string InvoiceTypeName {
+                get {
+                    try {
+                        return ((string)(this[this.tableFindInvoiceQuery.InvoiceTypeNameColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'InvoiceTypeName\' in table \'FindInvoiceQuery\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableFindInvoiceQuery.InvoiceTypeNameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsInvoiceDateNull() {
                 return this.IsNull(this.tableFindInvoiceQuery.InvoiceDateColumn);
             }
@@ -733,6 +795,30 @@ namespace InvoiceTracker {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetInvoiceIDNull() {
                 this[this.tableFindInvoiceQuery.InvoiceIDColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsInvoiceNumberNull() {
+                return this.IsNull(this.tableFindInvoiceQuery.InvoiceNumberColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetInvoiceNumberNull() {
+                this[this.tableFindInvoiceQuery.InvoiceNumberColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsInvoiceTypeNameNull() {
+                return this.IsNull(this.tableFindInvoiceQuery.InvoiceTypeNameColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetInvoiceTypeNameNull() {
+                this[this.tableFindInvoiceQuery.InvoiceTypeNameColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -900,6 +986,8 @@ namespace InvoiceTracker.FindInvoiceDataSetTableAdapters {
             tableMapping.ColumnMappings.Add("ClientPIB", "ClientPIB");
             tableMapping.ColumnMappings.Add("LocationName", "LocationName");
             tableMapping.ColumnMappings.Add("InvoiceID", "InvoiceID");
+            tableMapping.ColumnMappings.Add("InvoiceNumber", "InvoiceNumber");
+            tableMapping.ColumnMappings.Add("InvoiceTypeName", "InvoiceTypeName");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -916,8 +1004,8 @@ namespace InvoiceTracker.FindInvoiceDataSetTableAdapters {
             this._commandCollection = new global::System.Data.OleDb.OleDbCommand[1];
             this._commandCollection[0] = new global::System.Data.OleDb.OleDbCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT InvoiceDate, ClientName, ClientPIB, LocationName, InvoiceID FROM FindInvoi" +
-                "ceQuery";
+            this._commandCollection[0].CommandText = "SELECT InvoiceDate, ClientName, ClientPIB, LocationName, InvoiceID, InvoiceNumber" +
+                ", InvoiceTypeName FROM FindInvoiceQuery";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         

@@ -457,7 +457,8 @@ namespace InvoiceTracker
         private void btnChooseClient_Click(object sender, EventArgs e)
         {
             FindClientForm form = new FindClientForm();
-            if (form.ShowDialog() == System.Windows.Forms.DialogResult.OK && form.Client != null)
+            form.ShowDialog();
+            if (/*form.ShowDialog() == System.Windows.Forms.DialogResult.OK && */form.Client != null)
             {
                 _ClientID = form.Client.ClientID;
                 tbClientName.Text = form.Client.ClientName;
@@ -482,6 +483,6 @@ namespace InvoiceTracker
             }
             else
                 dateTurnover.Enabled = false;
-        }          
+        }         
     }
 }

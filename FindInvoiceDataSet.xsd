@@ -12,7 +12,7 @@
               <DbSource ConnectionRef="InvoiceTrackerConnectionString (Settings)" DbObjectName="FindInvoiceQuery" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>SELECT InvoiceDate, ClientName, ClientPIB, LocationName, InvoiceID FROM FindInvoiceQuery</CommandText>
+                    <CommandText>SELECT InvoiceDate, ClientName, ClientPIB, LocationName, InvoiceID, InvoiceNumber, InvoiceTypeName FROM FindInvoiceQuery</CommandText>
                     <Parameters />
                   </DbCommand>
                 </SelectCommand>
@@ -24,6 +24,8 @@
               <Mapping SourceColumn="ClientPIB" DataSetColumn="ClientPIB" />
               <Mapping SourceColumn="LocationName" DataSetColumn="LocationName" />
               <Mapping SourceColumn="InvoiceID" DataSetColumn="InvoiceID" />
+              <Mapping SourceColumn="InvoiceNumber" DataSetColumn="InvoiceNumber" />
+              <Mapping SourceColumn="InvoiceTypeName" DataSetColumn="InvoiceTypeName" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -35,7 +37,7 @@
   <xs:element name="FindInvoiceDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="FindInvoiceDataSet" msprop:Generator_UserDSName="FindInvoiceDataSet">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="FindInvoiceQuery" msprop:Generator_TableClassName="FindInvoiceQueryDataTable" msprop:Generator_TableVarName="tableFindInvoiceQuery" msprop:Generator_TablePropName="FindInvoiceQuery" msprop:Generator_RowDeletingName="FindInvoiceQueryRowDeleting" msprop:Generator_RowChangingName="FindInvoiceQueryRowChanging" msprop:Generator_RowEvHandlerName="FindInvoiceQueryRowChangeEventHandler" msprop:Generator_RowDeletedName="FindInvoiceQueryRowDeleted" msprop:Generator_UserTableName="FindInvoiceQuery" msprop:Generator_RowChangedName="FindInvoiceQueryRowChanged" msprop:Generator_RowEvArgName="FindInvoiceQueryRowChangeEvent" msprop:Generator_RowClassName="FindInvoiceQueryRow">
+        <xs:element name="FindInvoiceQuery" msprop:Generator_TableClassName="FindInvoiceQueryDataTable" msprop:Generator_TableVarName="tableFindInvoiceQuery" msprop:Generator_RowChangedName="FindInvoiceQueryRowChanged" msprop:Generator_TablePropName="FindInvoiceQuery" msprop:Generator_RowDeletingName="FindInvoiceQueryRowDeleting" msprop:Generator_RowChangingName="FindInvoiceQueryRowChanging" msprop:Generator_RowEvHandlerName="FindInvoiceQueryRowChangeEventHandler" msprop:Generator_RowDeletedName="FindInvoiceQueryRowDeleted" msprop:Generator_RowClassName="FindInvoiceQueryRow" msprop:Generator_UserTableName="FindInvoiceQuery" msprop:Generator_RowEvArgName="FindInvoiceQueryRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="InvoiceDate" msprop:Generator_ColumnVarNameInTable="columnInvoiceDate" msprop:Generator_ColumnPropNameInRow="InvoiceDate" msprop:Generator_ColumnPropNameInTable="InvoiceDateColumn" msprop:Generator_UserColumnName="InvoiceDate" type="xs:dateTime" minOccurs="0" />
@@ -61,6 +63,20 @@
                 </xs:simpleType>
               </xs:element>
               <xs:element name="InvoiceID" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnInvoiceID" msprop:Generator_ColumnPropNameInRow="InvoiceID" msprop:Generator_ColumnPropNameInTable="InvoiceIDColumn" msprop:Generator_UserColumnName="InvoiceID" type="xs:int" minOccurs="0" />
+              <xs:element name="InvoiceNumber" msprop:Generator_ColumnVarNameInTable="columnInvoiceNumber" msprop:Generator_ColumnPropNameInRow="InvoiceNumber" msprop:Generator_ColumnPropNameInTable="InvoiceNumberColumn" msprop:Generator_UserColumnName="InvoiceNumber" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="InvoiceTypeName" msprop:Generator_ColumnVarNameInTable="columnInvoiceTypeName" msprop:Generator_ColumnPropNameInRow="InvoiceTypeName" msprop:Generator_ColumnPropNameInTable="InvoiceTypeNameColumn" msprop:Generator_UserColumnName="InvoiceTypeName" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
             </xs:sequence>
           </xs:complexType>
         </xs:element>

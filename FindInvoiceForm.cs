@@ -24,6 +24,7 @@ namespace InvoiceTracker
 
             SetDataGrid();
 
+            this.Text = LocalizedText.FindInvoice;
             this.gbFindInvoice.Text = LocalizedText.FindInvoice;
             this.lblClientName.Text = LocalizedText.ClientNameFind;
             this.lblLocation.Text = LocalizedText.InvoiceLocation;
@@ -33,7 +34,10 @@ namespace InvoiceTracker
             this.ClientPIBColumn.HeaderText = LocalizedText.PIB;
             this.LocationNameColumn.HeaderText = LocalizedText.InvoiceLocation;
             this.EditInvoiceButtonColumn.HeaderText = LocalizedText.Edit;
+            this.InvoiceNumberColumn.HeaderText = LocalizedText.InvoiceNumber;
+            this.InvoiceTypeNameColumn.HeaderText = LocalizedText.Type;
             this.btnClose.Text = LocalizedText.Cancel;
+            this.btnNewInvoice.Text = LocalizedText.NewInvoice;
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -87,16 +91,36 @@ namespace InvoiceTracker
             findInvoiceDataSetBindingSource.Filter = GetFilter();
         }
 
-        private void dgInvoices_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void GetInvoiceDetails(int rowID)
         {
-            if (e.RowIndex > -1 && e.ColumnIndex == 5)           //  button click
+            if (rowID > -1)           
             {
-                int invoiceID = Convert.ToInt32(dgInvoices.Rows[e.RowIndex].Cells[4].Value);
+                int invoiceID = Convert.ToInt32(dgInvoices.Rows[rowID].Cells[6].Value);         //  InvoiceID
                 AddInvoiceForm form = new AddInvoiceForm(invoiceID);
                 form.ShowDialog();
             }
         }
 
-              
+        private void dgInvoices_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == 7)           //  button click
+                GetInvoiceDetails(e.RowIndex);
+        }
+
+        private void btnNewInvoice_Click(object sender, EventArgs e)
+        {
+            AddInvoiceForm form = new AddInvoiceForm();
+            form.ShowDialog();
+
+            //  refresh
+            
+            this.findInvoiceQueryTableAdapter.Fill(this.findInvoiceDataSet.FindInvoiceQuery);
+            SetDataGrid();
+        }
+
+        private void dgInvoices_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            GetInvoiceDetails(e.RowIndex);
+        }              
     }
 }

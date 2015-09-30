@@ -61,7 +61,8 @@
             this.dgClients.Name = "dgClients";
             this.dgClients.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgClients.Size = new System.Drawing.Size(807, 307);
-            this.dgClients.TabIndex = 0;            
+            this.dgClients.TabIndex = 0;
+            this.dgClients.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgClients_CellDoubleClick);
             // 
             // ClientIDColumn
             // 
