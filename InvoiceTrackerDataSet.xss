@@ -11,8 +11,8 @@
     <Shape ID="DesignTable:Unit" ZOrder="5" X="699" Y="445" Height="134" Width="169" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="83" />
     <Shape ID="DesignTable:Location" ZOrder="4" X="113" Y="392" Height="115" Width="194" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="64" />
     <Shape ID="DesignTable:InvoiceType" ZOrder="3" X="87" Y="246" Height="90" Width="158" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="0" />
-    <Shape ID="DesignTable:FindInvoiceQuery" ZOrder="2" X="87" Y="246" Height="90" Width="158" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="0" />
-    <Shape ID="DesignTable:Invoice" ZOrder="1" X="87" Y="246" Height="229" Width="186" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="178" />
+    <Shape ID="DesignTable:FindInvoiceQuery" ZOrder="2" X="87" Y="246" Height="210" Width="246" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="159" />
+    <Shape ID="DesignTable:Invoice" ZOrder="1" X="87" Y="246" Height="248" Width="186" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="197" />
   </Shapes>
   <Connectors>
     <Connector ID="DesignRelation:UnitInvoiceItem" ZOrder="10" LineWidth="11">
@@ -31,15 +31,15 @@
       <RoutePoints>
         <Point>
           <X>113</X>
-          <Y>483</Y>
+          <Y>502</Y>
         </Point>
         <Point>
           <X>105</X>
-          <Y>483</Y>
+          <Y>502</Y>
         </Point>
         <Point>
           <X>105</X>
-          <Y>475</Y>
+          <Y>494</Y>
         </Point>
       </RoutePoints>
     </Connector>

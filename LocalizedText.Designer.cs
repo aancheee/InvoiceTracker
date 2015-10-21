@@ -79,6 +79,15 @@ namespace InvoiceTracker {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Advanced invoice has been successfully created..
+        /// </summary>
+        internal static string AdvancedInvoiceSuccessfulylCreated {
+            get {
+                return ResourceManager.GetString("AdvancedInvoiceSuccessfulylCreated", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cancel.
         /// </summary>
         internal static string Cancel {
@@ -138,6 +147,24 @@ namespace InvoiceTracker {
         internal static string CompanyName {
             get {
                 return ResourceManager.GetString("CompanyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Create advanced invoice.
+        /// </summary>
+        internal static string CreateAdvancedInvoice {
+            get {
+                return ResourceManager.GetString("CreateAdvancedInvoice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Create invoice.
+        /// </summary>
+        internal static string CreateInvoice {
+            get {
+                return ResourceManager.GetString("CreateInvoice", resourceCulture);
             }
         }
         
@@ -264,6 +291,15 @@ namespace InvoiceTracker {
         internal static string Invoices {
             get {
                 return ResourceManager.GetString("Invoices", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invoice has been successfully created..
+        /// </summary>
+        internal static string InvoiceSuccessfulylCreated {
+            get {
+                return ResourceManager.GetString("InvoiceSuccessfulylCreated", resourceCulture);
             }
         }
         

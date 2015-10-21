@@ -29,14 +29,14 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddInvoiceForm));
             this.tbInvoiceNumber = new System.Windows.Forms.TextBox();
             this.lblInvoiceNumber = new System.Windows.Forms.Label();
@@ -100,6 +100,10 @@
             this.invoiceTypeTableAdapter = new InvoiceTracker.InvoiceTrackerDataSetTableAdapters.InvoiceTypeTableAdapter();
             this.lblTurnoverDate = new System.Windows.Forms.Label();
             this.dateTurnover = new System.Windows.Forms.DateTimePicker();
+            this.btnCreateR = new System.Windows.Forms.Button();
+            this.btnCreateA = new System.Windows.Forms.Button();
+            this.tbTotal = new System.Windows.Forms.TextBox();
+            this.lblTotal = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.clientBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.invoiceTrackerDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.locationBindingSource)).BeginInit();
@@ -224,10 +228,10 @@
             this.btnSave.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnSave.AutoEllipsis = true;
             this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSave.Location = new System.Drawing.Point(459, 546);
+            this.btnSave.Location = new System.Drawing.Point(544, 554);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(75, 23);
-            this.btnSave.TabIndex = 16;
+            this.btnSave.Size = new System.Drawing.Size(104, 49);
+            this.btnSave.TabIndex = 20;
             this.btnSave.Text = "btn&Save";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
@@ -237,10 +241,10 @@
             this.btnCancel.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancel.Location = new System.Drawing.Point(545, 546);
+            this.btnCancel.Location = new System.Drawing.Point(648, 554);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(75, 23);
-            this.btnCancel.TabIndex = 17;
+            this.btnCancel.Size = new System.Drawing.Size(104, 49);
+            this.btnCancel.TabIndex = 21;
             this.btnCancel.Text = "btn&Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
@@ -260,8 +264,8 @@
             // 
             // dgInvoiceItems
             // 
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dgInvoiceItems.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle17.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgInvoiceItems.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle17;
             this.dgInvoiceItems.AutoGenerateColumns = false;
             this.dgInvoiceItems.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgInvoiceItems.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -279,8 +283,8 @@
             this.dgInvoiceItems.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.dgInvoiceItems.Location = new System.Drawing.Point(21, 315);
             this.dgInvoiceItems.Name = "dgInvoiceItems";
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dgInvoiceItems.RowsDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle24.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgInvoiceItems.RowsDefaultCellStyle = dataGridViewCellStyle24;
             this.dgInvoiceItems.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dgInvoiceItems.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.dgInvoiceItems.Size = new System.Drawing.Size(942, 195);
@@ -339,29 +343,29 @@
             // UnitPriceColumn
             // 
             this.UnitPriceColumn.DataPropertyName = "UnitPrice";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle2.Format = "N2";
-            dataGridViewCellStyle2.NullValue = "0.00";
-            this.UnitPriceColumn.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle18.Format = "N2";
+            dataGridViewCellStyle18.NullValue = "0.00";
+            this.UnitPriceColumn.DefaultCellStyle = dataGridViewCellStyle18;
             this.UnitPriceColumn.HeaderText = "Unit Price";
             this.UnitPriceColumn.Name = "UnitPriceColumn";
             // 
             // QuantityColumn
             // 
             this.QuantityColumn.DataPropertyName = "Quantity";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle3.Format = "N2";
-            dataGridViewCellStyle3.NullValue = "0";
-            this.QuantityColumn.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle19.Format = "N2";
+            dataGridViewCellStyle19.NullValue = "0";
+            this.QuantityColumn.DefaultCellStyle = dataGridViewCellStyle19;
             this.QuantityColumn.HeaderText = "Quantity";
             this.QuantityColumn.Name = "QuantityColumn";
             // 
             // ValueColumn
             // 
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle4.Format = "N2";
-            dataGridViewCellStyle4.NullValue = "0.00";
-            this.ValueColumn.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle20.Format = "N2";
+            dataGridViewCellStyle20.NullValue = "0.00";
+            this.ValueColumn.DefaultCellStyle = dataGridViewCellStyle20;
             this.ValueColumn.HeaderText = "Value";
             this.ValueColumn.Name = "ValueColumn";
             this.ValueColumn.ReadOnly = true;
@@ -369,29 +373,29 @@
             // VATColumn
             // 
             this.VATColumn.DataPropertyName = "VAT";
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle5.Format = "N2";
-            dataGridViewCellStyle5.NullValue = "0.00";
-            this.VATColumn.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle21.Format = "N2";
+            dataGridViewCellStyle21.NullValue = "0.00";
+            this.VATColumn.DefaultCellStyle = dataGridViewCellStyle21;
             this.VATColumn.HeaderText = "VAT";
             this.VATColumn.Name = "VATColumn";
             // 
             // VatSumColumn
             // 
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle6.Format = "N2";
-            dataGridViewCellStyle6.NullValue = "0.00";
-            this.VatSumColumn.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle22.Format = "N2";
+            dataGridViewCellStyle22.NullValue = "0.00";
+            this.VatSumColumn.DefaultCellStyle = dataGridViewCellStyle22;
             this.VatSumColumn.HeaderText = "VatSum";
             this.VatSumColumn.Name = "VatSumColumn";
             this.VatSumColumn.ReadOnly = true;
             // 
             // TotalColumn
             // 
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle7.Format = "N2";
-            dataGridViewCellStyle7.NullValue = "0.00";
-            this.TotalColumn.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle23.Format = "N2";
+            dataGridViewCellStyle23.NullValue = "0.00";
+            this.TotalColumn.DefaultCellStyle = dataGridViewCellStyle23;
             this.TotalColumn.HeaderText = "Total";
             this.TotalColumn.Name = "TotalColumn";
             this.TotalColumn.ReadOnly = true;
@@ -602,10 +606,10 @@
             // btnPrint
             // 
             this.btnPrint.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnPrint.Location = new System.Drawing.Point(373, 546);
+            this.btnPrint.Location = new System.Drawing.Point(440, 554);
             this.btnPrint.Name = "btnPrint";
-            this.btnPrint.Size = new System.Drawing.Size(75, 23);
-            this.btnPrint.TabIndex = 15;
+            this.btnPrint.Size = new System.Drawing.Size(104, 49);
+            this.btnPrint.TabIndex = 19;
             this.btnPrint.Text = "btnPrint";
             this.btnPrint.UseVisualStyleBackColor = true;
             this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
@@ -614,10 +618,10 @@
             // 
             this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.statusLabel});
-            this.statusStrip.Location = new System.Drawing.Point(0, 582);
+            this.statusStrip.Location = new System.Drawing.Point(0, 616);
             this.statusStrip.Name = "statusStrip";
             this.statusStrip.Size = new System.Drawing.Size(984, 22);
-            this.statusStrip.TabIndex = 18;
+            this.statusStrip.TabIndex = 22;
             this.statusStrip.Text = "statusStrip1";
             // 
             // statusLabel
@@ -676,13 +680,59 @@
             this.dateTurnover.Size = new System.Drawing.Size(277, 22);
             this.dateTurnover.TabIndex = 12;
             // 
+            // btnCreateR
+            // 
+            this.btnCreateR.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnCreateR.Location = new System.Drawing.Point(232, 554);
+            this.btnCreateR.Name = "btnCreateR";
+            this.btnCreateR.Size = new System.Drawing.Size(104, 49);
+            this.btnCreateR.TabIndex = 17;
+            this.btnCreateR.Text = "btnCreateR";
+            this.btnCreateR.UseVisualStyleBackColor = true;
+            this.btnCreateR.Click += new System.EventHandler(this.btnCreateR_Click);
+            // 
+            // btnCreateA
+            // 
+            this.btnCreateA.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnCreateA.Location = new System.Drawing.Point(336, 554);
+            this.btnCreateA.Name = "btnCreateA";
+            this.btnCreateA.Size = new System.Drawing.Size(104, 49);
+            this.btnCreateA.TabIndex = 18;
+            this.btnCreateA.Text = "btnCreateA";
+            this.btnCreateA.UseVisualStyleBackColor = true;
+            this.btnCreateA.Click += new System.EventHandler(this.btnCreateA_Click);
+            // 
+            // tbTotal
+            // 
+            this.tbTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbTotal.Location = new System.Drawing.Point(799, 516);
+            this.tbTotal.Name = "tbTotal";
+            this.tbTotal.ReadOnly = true;
+            this.tbTotal.Size = new System.Drawing.Size(164, 22);
+            this.tbTotal.TabIndex = 16;
+            this.tbTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // lblTotal
+            // 
+            this.lblTotal.AutoSize = true;
+            this.lblTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotal.Location = new System.Drawing.Point(730, 522);
+            this.lblTotal.Name = "lblTotal";
+            this.lblTotal.Size = new System.Drawing.Size(61, 16);
+            this.lblTotal.TabIndex = 15;
+            this.lblTotal.Text = "lblTotal";
+            // 
             // AddInvoiceForm
             // 
             this.AcceptButton = this.btnSave;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(984, 604);
+            this.ClientSize = new System.Drawing.Size(984, 638);
+            this.Controls.Add(this.lblTotal);
+            this.Controls.Add(this.tbTotal);
+            this.Controls.Add(this.btnCreateA);
+            this.Controls.Add(this.btnCreateR);
             this.Controls.Add(this.dateTurnover);
             this.Controls.Add(this.lblTurnoverDate);
             this.Controls.Add(this.lblInvoiceType);
@@ -794,5 +844,9 @@
         private System.Windows.Forms.Button btnChooseClient;
         private System.Windows.Forms.Label lblTurnoverDate;
         private System.Windows.Forms.DateTimePicker dateTurnover;
+        private System.Windows.Forms.Button btnCreateR;
+        private System.Windows.Forms.Button btnCreateA;
+        private System.Windows.Forms.TextBox tbTotal;
+        private System.Windows.Forms.Label lblTotal;
     }
 }

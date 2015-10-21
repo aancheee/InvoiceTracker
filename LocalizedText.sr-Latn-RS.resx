@@ -231,4 +231,16 @@
   <data name="Type" xml:space="preserve">
     <value>Tip</value>
   </data>
+  <data name="CreateAdvancedInvoice" xml:space="preserve">
+    <value>Napravi avansni račun</value>
+  </data>
+  <data name="CreateInvoice" xml:space="preserve">
+    <value>Napravi račun otpremnicu</value>
+  </data>
+  <data name="AdvancedInvoiceSuccessfulylCreated" xml:space="preserve">
+    <value>Avansni račun je uspešno kreiran.</value>
+  </data>
+  <data name="InvoiceSuccessfulylCreated" xml:space="preserve">
+    <value>Račun otpremnica je uspešno kreirana.</value>
+  </data>
 </root>

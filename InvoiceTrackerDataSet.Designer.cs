@@ -2015,6 +2015,10 @@ namespace InvoiceTracker {
             
             private global::System.Data.DataColumn columnInvoiceID;
             
+            private global::System.Data.DataColumn columnInvoiceNumber;
+            
+            private global::System.Data.DataColumn columnInvoiceTypeName;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public FindInvoiceQueryDataTable() {
@@ -2090,6 +2094,22 @@ namespace InvoiceTracker {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn InvoiceNumberColumn {
+                get {
+                    return this.columnInvoiceNumber;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn InvoiceTypeNameColumn {
+                get {
+                    return this.columnInvoiceTypeName;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -2125,14 +2145,16 @@ namespace InvoiceTracker {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public FindInvoiceQueryRow AddFindInvoiceQueryRow(System.DateTime InvoiceDate, string ClientName, string ClientPIB, string LocationName, int InvoiceID) {
+            public FindInvoiceQueryRow AddFindInvoiceQueryRow(System.DateTime InvoiceDate, string ClientName, string ClientPIB, string LocationName, int InvoiceID, string InvoiceNumber, string InvoiceTypeName) {
                 FindInvoiceQueryRow rowFindInvoiceQueryRow = ((FindInvoiceQueryRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         InvoiceDate,
                         ClientName,
                         ClientPIB,
                         LocationName,
-                        InvoiceID};
+                        InvoiceID,
+                        InvoiceNumber,
+                        InvoiceTypeName};
                 rowFindInvoiceQueryRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowFindInvoiceQueryRow);
                 return rowFindInvoiceQueryRow;
@@ -2160,6 +2182,8 @@ namespace InvoiceTracker {
                 this.columnClientPIB = base.Columns["ClientPIB"];
                 this.columnLocationName = base.Columns["LocationName"];
                 this.columnInvoiceID = base.Columns["InvoiceID"];
+                this.columnInvoiceNumber = base.Columns["InvoiceNumber"];
+                this.columnInvoiceTypeName = base.Columns["InvoiceTypeName"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2175,9 +2199,15 @@ namespace InvoiceTracker {
                 base.Columns.Add(this.columnLocationName);
                 this.columnInvoiceID = new global::System.Data.DataColumn("InvoiceID", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnInvoiceID);
+                this.columnInvoiceNumber = new global::System.Data.DataColumn("InvoiceNumber", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnInvoiceNumber);
+                this.columnInvoiceTypeName = new global::System.Data.DataColumn("InvoiceTypeName", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnInvoiceTypeName);
                 this.columnClientName.MaxLength = 255;
                 this.columnClientPIB.MaxLength = 255;
                 this.columnLocationName.MaxLength = 255;
+                this.columnInvoiceNumber.MaxLength = 255;
+                this.columnInvoiceTypeName.MaxLength = 255;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2327,6 +2357,8 @@ namespace InvoiceTracker {
             
             private global::System.Data.DataColumn columnTurnoverDate;
             
+            private global::System.Data.DataColumn columnRelatedInvoiceID;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public InvoiceDataTable() {
@@ -2426,6 +2458,14 @@ namespace InvoiceTracker {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn RelatedInvoiceIDColumn {
+                get {
+                    return this.columnRelatedInvoiceID;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -2461,7 +2501,7 @@ namespace InvoiceTracker {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public InvoiceRow AddInvoiceRow(int InvoiceTypeID, string InvoiceNumber, ClientRow _parentClientRowBy_F35CB349_B905_40DC_BDB1_67DDD249A502_, System.DateTime InvoiceDate, LocationRow _parentLocationRowBy_B05C019B_A3A4_46E8_A63B_694BE3CC947B_, string Note, System.DateTime TurnoverDate) {
+            public InvoiceRow AddInvoiceRow(int InvoiceTypeID, string InvoiceNumber, ClientRow _parentClientRowBy_F35CB349_B905_40DC_BDB1_67DDD249A502_, System.DateTime InvoiceDate, LocationRow _parentLocationRowBy_B05C019B_A3A4_46E8_A63B_694BE3CC947B_, string Note, System.DateTime TurnoverDate, int RelatedInvoiceID) {
                 InvoiceRow rowInvoiceRow = ((InvoiceRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -2471,7 +2511,8 @@ namespace InvoiceTracker {
                         InvoiceDate,
                         null,
                         Note,
-                        TurnoverDate};
+                        TurnoverDate,
+                        RelatedInvoiceID};
                 if ((_parentClientRowBy_F35CB349_B905_40DC_BDB1_67DDD249A502_ != null)) {
                     columnValuesArray[3] = _parentClientRowBy_F35CB349_B905_40DC_BDB1_67DDD249A502_[0];
                 }
@@ -2516,6 +2557,7 @@ namespace InvoiceTracker {
                 this.columnLocationID = base.Columns["LocationID"];
                 this.columnNote = base.Columns["Note"];
                 this.columnTurnoverDate = base.Columns["TurnoverDate"];
+                this.columnRelatedInvoiceID = base.Columns["RelatedInvoiceID"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2537,6 +2579,8 @@ namespace InvoiceTracker {
                 base.Columns.Add(this.columnNote);
                 this.columnTurnoverDate = new global::System.Data.DataColumn("TurnoverDate", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnTurnoverDate);
+                this.columnRelatedInvoiceID = new global::System.Data.DataColumn("RelatedInvoiceID", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnRelatedInvoiceID);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnInvoiceID,
                                 this.columnInvoiceTypeID}, true));
@@ -3307,6 +3351,38 @@ namespace InvoiceTracker {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string InvoiceNumber {
+                get {
+                    try {
+                        return ((string)(this[this.tableFindInvoiceQuery.InvoiceNumberColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'InvoiceNumber\' in table \'FindInvoiceQuery\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableFindInvoiceQuery.InvoiceNumberColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string InvoiceTypeName {
+                get {
+                    try {
+                        return ((string)(this[this.tableFindInvoiceQuery.InvoiceTypeNameColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'InvoiceTypeName\' in table \'FindInvoiceQuery\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableFindInvoiceQuery.InvoiceTypeNameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsInvoiceDateNull() {
                 return this.IsNull(this.tableFindInvoiceQuery.InvoiceDateColumn);
             }
@@ -3363,6 +3439,30 @@ namespace InvoiceTracker {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetInvoiceIDNull() {
                 this[this.tableFindInvoiceQuery.InvoiceIDColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsInvoiceNumberNull() {
+                return this.IsNull(this.tableFindInvoiceQuery.InvoiceNumberColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetInvoiceNumberNull() {
+                this[this.tableFindInvoiceQuery.InvoiceNumberColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsInvoiceTypeNameNull() {
+                return this.IsNull(this.tableFindInvoiceQuery.InvoiceTypeNameColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetInvoiceTypeNameNull() {
+                this[this.tableFindInvoiceQuery.InvoiceTypeNameColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -3500,6 +3600,22 @@ namespace InvoiceTracker {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int RelatedInvoiceID {
+                get {
+                    try {
+                        return ((int)(this[this.tableInvoice.RelatedInvoiceIDColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'RelatedInvoiceID\' in table \'Invoice\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableInvoice.RelatedInvoiceIDColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public LocationRow LocationRow {
                 get {
                     return ((LocationRow)(this.GetParentRow(this.Table.ParentRelations["{B05C019B-A3A4-46E8-A63B-694BE3CC947B}"])));
@@ -3590,6 +3706,18 @@ namespace InvoiceTracker {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetTurnoverDateNull() {
                 this[this.tableInvoice.TurnoverDateColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsRelatedInvoiceIDNull() {
+                return this.IsNull(this.tableInvoice.RelatedInvoiceIDColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetRelatedInvoiceIDNull() {
+                this[this.tableInvoice.RelatedInvoiceIDColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -5818,6 +5946,8 @@ namespace InvoiceTracker.InvoiceTrackerDataSetTableAdapters {
             tableMapping.ColumnMappings.Add("ClientPIB", "ClientPIB");
             tableMapping.ColumnMappings.Add("LocationName", "LocationName");
             tableMapping.ColumnMappings.Add("InvoiceID", "InvoiceID");
+            tableMapping.ColumnMappings.Add("InvoiceNumber", "InvoiceNumber");
+            tableMapping.ColumnMappings.Add("InvoiceTypeName", "InvoiceTypeName");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -5834,8 +5964,8 @@ namespace InvoiceTracker.InvoiceTrackerDataSetTableAdapters {
             this._commandCollection = new global::System.Data.OleDb.OleDbCommand[1];
             this._commandCollection[0] = new global::System.Data.OleDb.OleDbCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT InvoiceDate, ClientName, ClientPIB, LocationName, InvoiceID FROM FindInvoi" +
-                "ceQuery";
+            this._commandCollection[0].CommandText = "SELECT InvoiceDate, ClientName, ClientPIB, LocationName, InvoiceID, InvoiceNumber" +
+                ", InvoiceTypeName FROM FindInvoiceQuery";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -5993,10 +6123,11 @@ namespace InvoiceTracker.InvoiceTrackerDataSetTableAdapters {
             tableMapping.ColumnMappings.Add("LocationID", "LocationID");
             tableMapping.ColumnMappings.Add("Note", "Note");
             tableMapping.ColumnMappings.Add("TurnoverDate", "TurnoverDate");
+            tableMapping.ColumnMappings.Add("RelatedInvoiceID", "RelatedInvoiceID");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.OleDb.OleDbCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM `Invoice` WHERE ((`InvoiceID` = ?) AND (`InvoiceTypeID` = ?) AND ((? = 1 AND `InvoiceNumber` IS NULL) OR (`InvoiceNumber` = ?)) AND ((? = 1 AND `ClientID` IS NULL) OR (`ClientID` = ?)) AND ((? = 1 AND `InvoiceDate` IS NULL) OR (`InvoiceDate` = ?)) AND ((? = 1 AND `LocationID` IS NULL) OR (`LocationID` = ?)) AND ((? = 1 AND `Note` IS NULL) OR (`Note` = ?)) AND ((? = 1 AND `TurnoverDate` IS NULL) OR (`TurnoverDate` = ?)))";
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM `Invoice` WHERE ((`InvoiceID` = ?) AND (`InvoiceTypeID` = ?) AND ((? = 1 AND `InvoiceNumber` IS NULL) OR (`InvoiceNumber` = ?)) AND ((? = 1 AND `ClientID` IS NULL) OR (`ClientID` = ?)) AND ((? = 1 AND `InvoiceDate` IS NULL) OR (`InvoiceDate` = ?)) AND ((? = 1 AND `LocationID` IS NULL) OR (`LocationID` = ?)) AND ((? = 1 AND `Note` IS NULL) OR (`Note` = ?)) AND ((? = 1 AND `TurnoverDate` IS NULL) OR (`TurnoverDate` = ?)) AND ((? = 1 AND `RelatedInvoiceID` IS NULL) OR (`RelatedInvoiceID` = ?)))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_InvoiceID", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "InvoiceID", global::System.Data.DataRowVersion.Original, false, null));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_InvoiceTypeID", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "InvoiceTypeID", global::System.Data.DataRowVersion.Original, false, null));
@@ -6012,10 +6143,13 @@ namespace InvoiceTracker.InvoiceTrackerDataSetTableAdapters {
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_Note", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Note", global::System.Data.DataRowVersion.Original, false, null));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_TurnoverDate", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "TurnoverDate", global::System.Data.DataRowVersion.Original, true, null));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_TurnoverDate", global::System.Data.OleDb.OleDbType.Date, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "TurnoverDate", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_RelatedInvoiceID", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "RelatedInvoiceID", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_RelatedInvoiceID", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "RelatedInvoiceID", global::System.Data.DataRowVersion.Original, false, null));
             this._adapter.InsertCommand = new global::System.Data.OleDb.OleDbCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
             this._adapter.InsertCommand.CommandText = "INSERT INTO `Invoice` (`InvoiceTypeID`, `InvoiceNumber`, `ClientID`, `InvoiceDate" +
-                "`, `LocationID`, `Note`, `TurnoverDate`) VALUES (?, ?, ?, ?, ?, ?, ?)";
+                "`, `LocationID`, `Note`, `TurnoverDate`, `RelatedInvoiceID`) VALUES (?, ?, ?, ?," +
+                " ?, ?, ?, ?)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("InvoiceTypeID", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "InvoiceTypeID", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("InvoiceNumber", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "InvoiceNumber", global::System.Data.DataRowVersion.Current, false, null));
@@ -6024,9 +6158,10 @@ namespace InvoiceTracker.InvoiceTrackerDataSetTableAdapters {
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("LocationID", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "LocationID", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Note", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Note", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("TurnoverDate", global::System.Data.OleDb.OleDbType.Date, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "TurnoverDate", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("RelatedInvoiceID", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "RelatedInvoiceID", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.UpdateCommand = new global::System.Data.OleDb.OleDbCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE `Invoice` SET `InvoiceTypeID` = ?, `InvoiceNumber` = ?, `ClientID` = ?, `InvoiceDate` = ?, `LocationID` = ?, `Note` = ?, `TurnoverDate` = ? WHERE ((`InvoiceID` = ?) AND (`InvoiceTypeID` = ?) AND ((? = 1 AND `InvoiceNumber` IS NULL) OR (`InvoiceNumber` = ?)) AND ((? = 1 AND `ClientID` IS NULL) OR (`ClientID` = ?)) AND ((? = 1 AND `InvoiceDate` IS NULL) OR (`InvoiceDate` = ?)) AND ((? = 1 AND `LocationID` IS NULL) OR (`LocationID` = ?)) AND ((? = 1 AND `Note` IS NULL) OR (`Note` = ?)) AND ((? = 1 AND `TurnoverDate` IS NULL) OR (`TurnoverDate` = ?)))";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE `Invoice` SET `InvoiceTypeID` = ?, `InvoiceNumber` = ?, `ClientID` = ?, `InvoiceDate` = ?, `LocationID` = ?, `Note` = ?, `TurnoverDate` = ?, `RelatedInvoiceID` = ? WHERE ((`InvoiceID` = ?) AND (`InvoiceTypeID` = ?) AND ((? = 1 AND `InvoiceNumber` IS NULL) OR (`InvoiceNumber` = ?)) AND ((? = 1 AND `ClientID` IS NULL) OR (`ClientID` = ?)) AND ((? = 1 AND `InvoiceDate` IS NULL) OR (`InvoiceDate` = ?)) AND ((? = 1 AND `LocationID` IS NULL) OR (`LocationID` = ?)) AND ((? = 1 AND `Note` IS NULL) OR (`Note` = ?)) AND ((? = 1 AND `TurnoverDate` IS NULL) OR (`TurnoverDate` = ?)) AND ((? = 1 AND `RelatedInvoiceID` IS NULL) OR (`RelatedInvoiceID` = ?)))";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("InvoiceTypeID", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "InvoiceTypeID", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("InvoiceNumber", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "InvoiceNumber", global::System.Data.DataRowVersion.Current, false, null));
@@ -6035,6 +6170,7 @@ namespace InvoiceTracker.InvoiceTrackerDataSetTableAdapters {
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("LocationID", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "LocationID", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Note", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Note", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("TurnoverDate", global::System.Data.OleDb.OleDbType.Date, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "TurnoverDate", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("RelatedInvoiceID", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "RelatedInvoiceID", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_InvoiceID", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "InvoiceID", global::System.Data.DataRowVersion.Original, false, null));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_InvoiceTypeID", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "InvoiceTypeID", global::System.Data.DataRowVersion.Original, false, null));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_InvoiceNumber", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "InvoiceNumber", global::System.Data.DataRowVersion.Original, true, null));
@@ -6049,6 +6185,8 @@ namespace InvoiceTracker.InvoiceTrackerDataSetTableAdapters {
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_Note", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Note", global::System.Data.DataRowVersion.Original, false, null));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_TurnoverDate", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "TurnoverDate", global::System.Data.DataRowVersion.Original, true, null));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_TurnoverDate", global::System.Data.OleDb.OleDbType.Date, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "TurnoverDate", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_RelatedInvoiceID", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "RelatedInvoiceID", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_RelatedInvoiceID", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "RelatedInvoiceID", global::System.Data.DataRowVersion.Original, false, null));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -6065,7 +6203,7 @@ namespace InvoiceTracker.InvoiceTrackerDataSetTableAdapters {
             this._commandCollection[0] = new global::System.Data.OleDb.OleDbCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT InvoiceID, InvoiceTypeID, InvoiceNumber, ClientID, InvoiceDate, LocationID" +
-                ", [Note], TurnoverDate FROM Invoice";
+                ", [Note], TurnoverDate, RelatedInvoiceID FROM Invoice";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -6126,7 +6264,7 @@ namespace InvoiceTracker.InvoiceTrackerDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_InvoiceID, int Original_InvoiceTypeID, string Original_InvoiceNumber, global::System.Nullable<int> Original_ClientID, global::System.Nullable<global::System.DateTime> Original_InvoiceDate, global::System.Nullable<int> Original_LocationID, string Original_Note, global::System.Nullable<global::System.DateTime> Original_TurnoverDate) {
+        public virtual int Delete(int Original_InvoiceID, int Original_InvoiceTypeID, string Original_InvoiceNumber, global::System.Nullable<int> Original_ClientID, global::System.Nullable<global::System.DateTime> Original_InvoiceDate, global::System.Nullable<int> Original_LocationID, string Original_Note, global::System.Nullable<global::System.DateTime> Original_TurnoverDate, global::System.Nullable<int> Original_RelatedInvoiceID) {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_InvoiceID));
             this.Adapter.DeleteCommand.Parameters[1].Value = ((int)(Original_InvoiceTypeID));
             if ((Original_InvoiceNumber == null)) {
@@ -6177,6 +6315,14 @@ namespace InvoiceTracker.InvoiceTrackerDataSetTableAdapters {
                 this.Adapter.DeleteCommand.Parameters[12].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[13].Value = global::System.DBNull.Value;
             }
+            if ((Original_RelatedInvoiceID.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[14].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[15].Value = ((int)(Original_RelatedInvoiceID.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[14].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[15].Value = global::System.DBNull.Value;
+            }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -6197,7 +6343,7 @@ namespace InvoiceTracker.InvoiceTrackerDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(int InvoiceTypeID, string InvoiceNumber, global::System.Nullable<int> ClientID, global::System.Nullable<global::System.DateTime> InvoiceDate, global::System.Nullable<int> LocationID, string Note, global::System.Nullable<global::System.DateTime> TurnoverDate) {
+        public virtual int Insert(int InvoiceTypeID, string InvoiceNumber, global::System.Nullable<int> ClientID, global::System.Nullable<global::System.DateTime> InvoiceDate, global::System.Nullable<int> LocationID, string Note, global::System.Nullable<global::System.DateTime> TurnoverDate, global::System.Nullable<int> RelatedInvoiceID) {
             this.Adapter.InsertCommand.Parameters[0].Value = ((int)(InvoiceTypeID));
             if ((InvoiceNumber == null)) {
                 this.Adapter.InsertCommand.Parameters[1].Value = global::System.DBNull.Value;
@@ -6235,6 +6381,12 @@ namespace InvoiceTracker.InvoiceTrackerDataSetTableAdapters {
             else {
                 this.Adapter.InsertCommand.Parameters[6].Value = global::System.DBNull.Value;
             }
+            if ((RelatedInvoiceID.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[7].Value = ((int)(RelatedInvoiceID.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[7].Value = global::System.DBNull.Value;
+            }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -6255,7 +6407,24 @@ namespace InvoiceTracker.InvoiceTrackerDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(int InvoiceTypeID, string InvoiceNumber, global::System.Nullable<int> ClientID, global::System.Nullable<global::System.DateTime> InvoiceDate, global::System.Nullable<int> LocationID, string Note, global::System.Nullable<global::System.DateTime> TurnoverDate, int Original_InvoiceID, int Original_InvoiceTypeID, string Original_InvoiceNumber, global::System.Nullable<int> Original_ClientID, global::System.Nullable<global::System.DateTime> Original_InvoiceDate, global::System.Nullable<int> Original_LocationID, string Original_Note, global::System.Nullable<global::System.DateTime> Original_TurnoverDate) {
+        public virtual int Update(
+                    int InvoiceTypeID, 
+                    string InvoiceNumber, 
+                    global::System.Nullable<int> ClientID, 
+                    global::System.Nullable<global::System.DateTime> InvoiceDate, 
+                    global::System.Nullable<int> LocationID, 
+                    string Note, 
+                    global::System.Nullable<global::System.DateTime> TurnoverDate, 
+                    global::System.Nullable<int> RelatedInvoiceID, 
+                    int Original_InvoiceID, 
+                    int Original_InvoiceTypeID, 
+                    string Original_InvoiceNumber, 
+                    global::System.Nullable<int> Original_ClientID, 
+                    global::System.Nullable<global::System.DateTime> Original_InvoiceDate, 
+                    global::System.Nullable<int> Original_LocationID, 
+                    string Original_Note, 
+                    global::System.Nullable<global::System.DateTime> Original_TurnoverDate, 
+                    global::System.Nullable<int> Original_RelatedInvoiceID) {
             this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(InvoiceTypeID));
             if ((InvoiceNumber == null)) {
                 this.Adapter.UpdateCommand.Parameters[1].Value = global::System.DBNull.Value;
@@ -6293,55 +6462,69 @@ namespace InvoiceTracker.InvoiceTrackerDataSetTableAdapters {
             else {
                 this.Adapter.UpdateCommand.Parameters[6].Value = global::System.DBNull.Value;
             }
-            this.Adapter.UpdateCommand.Parameters[7].Value = ((int)(Original_InvoiceID));
-            this.Adapter.UpdateCommand.Parameters[8].Value = ((int)(Original_InvoiceTypeID));
-            if ((Original_InvoiceNumber == null)) {
-                this.Adapter.UpdateCommand.Parameters[9].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[10].Value = global::System.DBNull.Value;
+            if ((RelatedInvoiceID.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[7].Value = ((int)(RelatedInvoiceID.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[9].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[10].Value = ((string)(Original_InvoiceNumber));
+                this.Adapter.UpdateCommand.Parameters[7].Value = global::System.DBNull.Value;
+            }
+            this.Adapter.UpdateCommand.Parameters[8].Value = ((int)(Original_InvoiceID));
+            this.Adapter.UpdateCommand.Parameters[9].Value = ((int)(Original_InvoiceTypeID));
+            if ((Original_InvoiceNumber == null)) {
+                this.Adapter.UpdateCommand.Parameters[10].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[11].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[10].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[11].Value = ((string)(Original_InvoiceNumber));
             }
             if ((Original_ClientID.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[11].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[12].Value = ((int)(Original_ClientID.Value));
+                this.Adapter.UpdateCommand.Parameters[12].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[13].Value = ((int)(Original_ClientID.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[11].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[12].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[12].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[13].Value = global::System.DBNull.Value;
             }
             if ((Original_InvoiceDate.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[13].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[14].Value = ((System.DateTime)(Original_InvoiceDate.Value));
+                this.Adapter.UpdateCommand.Parameters[14].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[15].Value = ((System.DateTime)(Original_InvoiceDate.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[13].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[14].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[14].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[15].Value = global::System.DBNull.Value;
             }
             if ((Original_LocationID.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[15].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[16].Value = ((int)(Original_LocationID.Value));
+                this.Adapter.UpdateCommand.Parameters[16].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[17].Value = ((int)(Original_LocationID.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[15].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[16].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[16].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[17].Value = global::System.DBNull.Value;
             }
             if ((Original_Note == null)) {
-                this.Adapter.UpdateCommand.Parameters[17].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[18].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[18].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[19].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[17].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[18].Value = ((string)(Original_Note));
+                this.Adapter.UpdateCommand.Parameters[18].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[19].Value = ((string)(Original_Note));
             }
             if ((Original_TurnoverDate.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[19].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[20].Value = ((System.DateTime)(Original_TurnoverDate.Value));
+                this.Adapter.UpdateCommand.Parameters[20].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[21].Value = ((System.DateTime)(Original_TurnoverDate.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[19].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[20].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[20].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[21].Value = global::System.DBNull.Value;
+            }
+            if ((Original_RelatedInvoiceID.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[22].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[23].Value = ((int)(Original_RelatedInvoiceID.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[22].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[23].Value = global::System.DBNull.Value;
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -6363,8 +6546,24 @@ namespace InvoiceTracker.InvoiceTrackerDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string InvoiceNumber, global::System.Nullable<int> ClientID, global::System.Nullable<global::System.DateTime> InvoiceDate, global::System.Nullable<int> LocationID, string Note, global::System.Nullable<global::System.DateTime> TurnoverDate, int Original_InvoiceID, int Original_InvoiceTypeID, string Original_InvoiceNumber, global::System.Nullable<int> Original_ClientID, global::System.Nullable<global::System.DateTime> Original_InvoiceDate, global::System.Nullable<int> Original_LocationID, string Original_Note, global::System.Nullable<global::System.DateTime> Original_TurnoverDate) {
-            return this.Update(Original_InvoiceTypeID, InvoiceNumber, ClientID, InvoiceDate, LocationID, Note, TurnoverDate, Original_InvoiceID, Original_InvoiceTypeID, Original_InvoiceNumber, Original_ClientID, Original_InvoiceDate, Original_LocationID, Original_Note, Original_TurnoverDate);
+        public virtual int Update(
+                    string InvoiceNumber, 
+                    global::System.Nullable<int> ClientID, 
+                    global::System.Nullable<global::System.DateTime> InvoiceDate, 
+                    global::System.Nullable<int> LocationID, 
+                    string Note, 
+                    global::System.Nullable<global::System.DateTime> TurnoverDate, 
+                    global::System.Nullable<int> RelatedInvoiceID, 
+                    int Original_InvoiceID, 
+                    int Original_InvoiceTypeID, 
+                    string Original_InvoiceNumber, 
+                    global::System.Nullable<int> Original_ClientID, 
+                    global::System.Nullable<global::System.DateTime> Original_InvoiceDate, 
+                    global::System.Nullable<int> Original_LocationID, 
+                    string Original_Note, 
+                    global::System.Nullable<global::System.DateTime> Original_TurnoverDate, 
+                    global::System.Nullable<int> Original_RelatedInvoiceID) {
+            return this.Update(Original_InvoiceTypeID, InvoiceNumber, ClientID, InvoiceDate, LocationID, Note, TurnoverDate, RelatedInvoiceID, Original_InvoiceID, Original_InvoiceTypeID, Original_InvoiceNumber, Original_ClientID, Original_InvoiceDate, Original_LocationID, Original_Note, Original_TurnoverDate, Original_RelatedInvoiceID);
         }
     }
     

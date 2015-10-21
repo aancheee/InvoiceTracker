@@ -57,8 +57,6 @@ namespace InvoiceTracker
                 string a = "";
             }
 
-            _IsNew = _InvoiceID < 1;
-
             this.Text = LocalizedText.NewInvoice;
             this.lblInvoiceNumber.Text = LocalizedText.InvoiceNumber;
             this.lblClientName.Text = LocalizedText.ClientName;
@@ -82,11 +80,12 @@ namespace InvoiceTracker
             this.lblInvoiceType.Text = LocalizedText.Type;
             this.lblTurnoverDate.Text = LocalizedText.TurnoverDate;
             this.btnChooseClient.Text = LocalizedText.ChooseClient;
+            this.btnCreateR.Text = LocalizedText.CreateInvoice;
+            this.btnCreateA.Text = LocalizedText.CreateAdvancedInvoice;
+            this.lblTotal.Text = LocalizedText.Total.ToUpper();
 
             this.cbLocations.SelectedIndex = -1;
             
-            //this.tbInvoiceNumber.Text = _InvoiceID.ToString();
-
             this.QuantityColumn.ValueType = typeof(double);
             this.UnitPriceColumn.ValueType = typeof(double);
             this.ValueColumn.ValueType = typeof(double);
@@ -94,46 +93,7 @@ namespace InvoiceTracker
             this.TotalColumn.ValueType = typeof(double);
             this.VatSumColumn.ValueType = typeof(double);
 
-            invoiceItemBindingSource.Filter = string.Format("InvoiceID = {0}", _InvoiceID);
-            invoiceBindingSource.Filter = string.Format("InvoiceID = {0}", _InvoiceID);
-
-            if (invoiceBindingSource.Count > 0)
-            {
-                InvoiceTrackerDataSet.InvoiceRow inv = ((InvoiceTrackerDataSet.InvoiceRow)((DataRowView)invoiceBindingSource.Current).Row);
-                tbClientName.Text = inv.ClientRow.ClientName;
-                tbClientAddress.Text = inv.ClientRow.Address;
-                tbClientPIB.Text = inv.ClientRow.ClientPIB;
-                cbLocations.SelectedValue = inv.LocationID;
-                tbNote.Text = inv.Note;
-                dateInvoice.Value = inv.InvoiceDate;
-                tbInvoiceNumber.Text = inv.InvoiceNumber;
-                cbInvoiceTypes.SelectedValue = inv.InvoiceTypeID;
-                dateTurnover.Value = inv.TurnoverDate;
-                SetTurnoverDate();
-            }
-
-            if (_IsNew)
-                btnPrint.Enabled = false;
-            else
-            {
-                btnPrint.Enabled = true;
-                cbInvoiceTypes.Enabled = false;
-            }
-
-            foreach (DataGridViewRow row in dgInvoiceItems.Rows)
-            {
-                if (row.Cells["UnitPriceColumn"].Value != null && row.Cells["QuantityColumn"].Value != null)
-                {
-                    row.Cells["ValueColumn"].Value = Convert.ToDouble(row.Cells["UnitPriceColumn"].Value) * Convert.ToDouble(row.Cells["QuantityColumn"].Value);
-
-                    if (row.Cells["VATColumn"].Value != null)
-                    {
-                        row.Cells["VatSumColumn"].Value = Convert.ToDouble(row.Cells["ValueColumn"].Value) * Convert.ToDouble(row.Cells["VATColumn"].Value) / 100;
-
-                        row.Cells["TotalColumn"].Value = Convert.ToDouble(row.Cells["ValueColumn"].Value) + Convert.ToDouble(row.Cells["VatSumColumn"].Value);
-                    }
-                }
-            }
+            LoadData();           
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -206,7 +166,7 @@ namespace InvoiceTracker
 
             //  Invoice
             InvoiceTrackerDataSet.InvoiceRow invoice;       
-            InvoiceTrackerDataSet.InvoiceRow hlpInvoice;
+
             if (_IsNew)
                 invoice = invoiceTrackerDataSet.Invoice.NewInvoiceRow();
             else
@@ -222,32 +182,7 @@ namespace InvoiceTracker
 
             if (_IsNew)
             {
-                if (invoice.InvoiceTypeID == 1 || invoice.InvoiceTypeID == 2)       //  racun otpremnica, avansni racun
-                //  1, 2, 3... by year
-                {
-                    hlpInvoice = invoiceTrackerDataSet.Invoice.Where(x => x.InvoiceTypeID == invoice.InvoiceTypeID && x.InvoiceDate.Year == invoice.InvoiceDate.Year).OrderByDescending(x => x.InvoiceNumber).FirstOrDefault();
-                    if (hlpInvoice != null)
-                        invNoHlp = (Convert.ToInt32(hlpInvoice.InvoiceNumber) + 1).ToString();
-                    else
-                        invNoHlp = "1";
-                }
-                else if (invoice.InvoiceTypeID == 3 || invoice.InvoiceTypeID == 4)  //  ponuda, predracun
-                //  01, 02, 03... by month
-                {
-                    hlpInvoice = invoiceTrackerDataSet.Invoice.Where(x => x.InvoiceTypeID == invoice.InvoiceTypeID && x.InvoiceDate.Year == invoice.InvoiceDate.Year && x.InvoiceDate.Month == invoice.InvoiceDate.Month).OrderByDescending(x => x.InvoiceNumber).FirstOrDefault();
-                    if (hlpInvoice != null)
-                    {
-                        invNoHlp = (Convert.ToInt32(hlpInvoice.InvoiceNumber.Replace(invoice.InvoiceDate.ToString("yyyy") + invoice.InvoiceDate.ToString("MM") + "-", "")) + 1).ToString();
-                        if (invNoHlp.Length < 2)
-                            invNoHlp = "0" + invNoHlp;
-
-                        invNoHlp = invoice.InvoiceDate.ToString("yyyy") + invoice.InvoiceDate.ToString("MM") + "-" + invNoHlp;
-                    }
-                    else
-                        invNoHlp = invoice.InvoiceDate.ToString("yyyy") + invoice.InvoiceDate.ToString("MM") + "-" + "01";
-                }
-
-                invoice.InvoiceNumber = invNoHlp;
+                invoice.InvoiceNumber = GetInvoiceNumber(invoice);
 
                 invoiceTrackerDataSet.Invoice.Rows.Add(invoice);
             }
@@ -297,11 +232,14 @@ namespace InvoiceTracker
             tbInvoiceNumber.Text = invNoHlp; 
             cbInvoiceTypes.Enabled = false;
 
-            if (_IsNew)
-            {
-                _IsNew = false;
-                btnPrint.Enabled = true;
-            }
+            //if (_IsNew)
+            //{
+            //    _IsNew = false;
+            //    btnPrint.Enabled = true;
+            //}
+
+            //SetButtons();
+            LoadData();
         }
 
         private void dgInvoiceItems_CellValueChanged(object sender, DataGridViewCellEventArgs e)
@@ -327,7 +265,15 @@ namespace InvoiceTracker
                            Convert.ToDouble(view.Rows[e.RowIndex].Cells[4].Value) * Convert.ToDouble(view.Rows[e.RowIndex].Cells[5].Value) * (1 + Convert.ToDouble(view.Rows[e.RowIndex].Cells[7].Value) / 100);        
                             //Convert.ToDouble(view.Rows[e.RowIndex].Cells[4].Value) * Convert.ToDouble(view.Rows[e.RowIndex].Cells[5].Value) * (1 + Convert.ToDouble(view.Rows[e.RowIndex].Cells[7].Value)/100);
                 }
-            }
+
+                double total = 0;
+                foreach (DataGridViewRow row in view.Rows)
+                {
+                    total += Convert.ToDouble(row.Cells[9].Value);
+                }
+
+                tbTotal.Text = total.ToString("#,##0.00");
+            }            
         }
 
         private void dgInvoiceItems_CellLeave(object sender, DataGridViewCellEventArgs e)
@@ -470,6 +416,7 @@ namespace InvoiceTracker
         private void cbInvoiceTypes_SelectedIndexChanged(object sender, EventArgs e)
         {
             SetTurnoverDate();
+            SetButtons();
         }
 
         private void SetTurnoverDate()
@@ -483,6 +430,166 @@ namespace InvoiceTracker
             }
             else
                 dateTurnover.Enabled = false;
-        }         
+        }
+
+        private void SetButtons()
+        {
+            if (!_IsNew && cbInvoiceTypes.SelectedValue != null &&
+                (Convert.ToInt32(cbInvoiceTypes.SelectedValue) == 3 || Convert.ToInt32(cbInvoiceTypes.SelectedValue) == 4))
+            {
+                btnCreateA.Enabled = true;
+                btnCreateR.Enabled = true;
+            }
+            else
+            {
+                btnCreateA.Enabled = false;
+                btnCreateR.Enabled = false;
+            }
+        }
+
+        private string GetInvoiceNumber(InvoiceTrackerDataSet.InvoiceRow invoice)
+        {
+            InvoiceTrackerDataSet.InvoiceRow hlpInvoice = null;
+            string invNoHlp = "";
+
+            if (invoice.InvoiceTypeID == 1 || invoice.InvoiceTypeID == 2)       //  racun otpremnica, avansni racun
+            //  1, 2, 3... by year
+            {
+                hlpInvoice = invoiceTrackerDataSet.Invoice.Where(x => x.InvoiceTypeID == invoice.InvoiceTypeID && x.InvoiceDate.Year == invoice.InvoiceDate.Year).OrderByDescending(x => x.InvoiceNumber).FirstOrDefault();
+                if (hlpInvoice != null)
+                    invNoHlp = (Convert.ToInt32(hlpInvoice.InvoiceNumber) + 1).ToString();
+                else
+                    invNoHlp = "1";
+            }
+            else if (invoice.InvoiceTypeID == 3 || invoice.InvoiceTypeID == 4)  //  ponuda, predracun
+            //  01, 02, 03... by month
+            {
+                hlpInvoice = invoiceTrackerDataSet.Invoice.Where(x => x.InvoiceTypeID == invoice.InvoiceTypeID && x.InvoiceDate.Year == invoice.InvoiceDate.Year && x.InvoiceDate.Month == invoice.InvoiceDate.Month).OrderByDescending(x => x.InvoiceNumber).FirstOrDefault();
+                if (hlpInvoice != null)
+                {
+                    invNoHlp = (Convert.ToInt32(hlpInvoice.InvoiceNumber.Replace(invoice.InvoiceDate.ToString("yyyy") + invoice.InvoiceDate.ToString("MM") + "-", "")) + 1).ToString();
+                    if (invNoHlp.Length < 2)
+                        invNoHlp = "0" + invNoHlp;
+
+                    invNoHlp = invoice.InvoiceDate.ToString("yyyy") + invoice.InvoiceDate.ToString("MM") + "-" + invNoHlp;
+                }
+                else
+                    invNoHlp = invoice.InvoiceDate.ToString("yyyy") + invoice.InvoiceDate.ToString("MM") + "-" + "01";
+            }
+
+            return invNoHlp;
+        }
+
+        private void btnCreateR_Click(object sender, EventArgs e)
+        {
+            CreateInvoice(1);
+        }
+
+        private void CreateInvoice(int invoiceTypeID)
+        {
+            int oldInvoiceNumber = _InvoiceID;
+            InvoiceTrackerDataSet.InvoiceRow invoice = invoiceTrackerDataSet.Invoice.Where(x => x.InvoiceID == oldInvoiceNumber).FirstOrDefault();
+            List<InvoiceTrackerDataSet.InvoiceItemRow> items = invoiceTrackerDataSet.InvoiceItem.Where(x => x.InvoiceID == oldInvoiceNumber).ToList();
+
+            InvoiceTrackerDataSet.InvoiceRow newInvoice = invoiceTrackerDataSet.Invoice.NewInvoiceRow();
+            newInvoice.InvoiceTypeID = invoiceTypeID;
+            newInvoice.ClientID = invoice.ClientID;
+            newInvoice.InvoiceDate = invoice.InvoiceDate;
+            newInvoice.LocationID = invoice.LocationID;
+            newInvoice.Note = invoice.Note;
+            newInvoice.TurnoverDate = DateTime.Now;
+            newInvoice.InvoiceNumber = GetInvoiceNumber(newInvoice);
+            newInvoice.RelatedInvoiceID = oldInvoiceNumber;
+            invoiceTrackerDataSet.Invoice.Rows.Add(newInvoice);
+
+            invoiceBindingSource.EndEdit();
+            invoiceTableAdapter.Update(invoiceTrackerDataSet.Invoice);
+            invoiceTableAdapter.Fill(invoiceTrackerDataSet.Invoice);
+
+            _InvoiceID = invoiceTrackerDataSet.Invoice.OrderByDescending(x => x.InvoiceID).First().InvoiceID;
+
+            foreach (InvoiceTrackerDataSet.InvoiceItemRow item in items)
+            {
+                InvoiceTrackerDataSet.InvoiceItemRow newItem = invoiceTrackerDataSet.InvoiceItem.NewInvoiceItemRow();
+                newItem.InvoiceID = _InvoiceID;
+                newItem.Quantity = item.Quantity;
+                newItem.UnitID = item.UnitID;
+                newItem.UnitPrice = item.UnitPrice;
+                newItem.VAT = item.VAT;
+                newItem.Description = item.Description;
+                invoiceTrackerDataSet.InvoiceItem.Rows.Add(newItem);
+            }
+
+            invoiceItemBindingSource.EndEdit();
+            invoiceItemTableAdapter.Update(invoiceTrackerDataSet.InvoiceItem);
+            invoiceItemTableAdapter.Fill(invoiceTrackerDataSet.InvoiceItem);
+
+            string message = "";
+            if (invoiceTypeID == 1)
+                message = LocalizedText.InvoiceSuccessfulylCreated;
+            else
+                message = LocalizedText.AdvancedInvoiceSuccessfulylCreated;
+
+            MessageBox.Show(message, LocalizedText.Success);
+
+            LoadData();
+        }
+
+        private void btnCreateA_Click(object sender, EventArgs e)
+        {
+            CreateInvoice(2);
+        }
+
+        private void LoadData()
+        {
+            _IsNew = _InvoiceID < 1;
+
+            invoiceItemBindingSource.Filter = string.Format("InvoiceID = {0}", _InvoiceID);
+            invoiceBindingSource.Filter = string.Format("InvoiceID = {0}", _InvoiceID);
+
+            if (invoiceBindingSource.Count > 0)
+            {
+                InvoiceTrackerDataSet.InvoiceRow inv = ((InvoiceTrackerDataSet.InvoiceRow)((DataRowView)invoiceBindingSource.Current).Row);
+                tbClientName.Text = inv.ClientRow.ClientName;
+                tbClientAddress.Text = inv.ClientRow.Address;
+                tbClientPIB.Text = inv.ClientRow.ClientPIB;
+                cbLocations.SelectedValue = inv.LocationID;
+                tbNote.Text = inv.Note;
+                dateInvoice.Value = inv.InvoiceDate;
+                tbInvoiceNumber.Text = inv.InvoiceNumber;
+                cbInvoiceTypes.SelectedValue = inv.InvoiceTypeID;
+                dateTurnover.Value = inv.IsTurnoverDateNull() ? DateTime.Now : inv.TurnoverDate;
+                SetTurnoverDate();
+            }
+
+            if (_IsNew)
+                btnPrint.Enabled = false;
+            else
+            {
+                btnPrint.Enabled = true;
+                cbInvoiceTypes.Enabled = false;
+            }
+
+            double total = 0;            
+
+            foreach (DataGridViewRow row in dgInvoiceItems.Rows)
+            {
+                if (row.Cells["UnitPriceColumn"].Value != null && row.Cells["QuantityColumn"].Value != null)
+                {
+                    row.Cells["ValueColumn"].Value = Convert.ToDouble(row.Cells["UnitPriceColumn"].Value) * Convert.ToDouble(row.Cells["QuantityColumn"].Value);
+
+                    if (row.Cells["VATColumn"].Value != null)
+                    {
+                        row.Cells["VatSumColumn"].Value = Convert.ToDouble(row.Cells["ValueColumn"].Value) * Convert.ToDouble(row.Cells["VATColumn"].Value) / 100;
+                        row.Cells["TotalColumn"].Value = Convert.ToDouble(row.Cells["ValueColumn"].Value) + Convert.ToDouble(row.Cells["VatSumColumn"].Value);
+                        total += Convert.ToDouble(row.Cells["TotalColumn"].Value);
+                    }
+                }
+            }
+
+            tbTotal.Text = total.ToString("#,##0.00");
+
+            SetButtons();
+        }
     }
 }
